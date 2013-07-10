@@ -4,8 +4,12 @@ define ("DB_HOST","localhost");
 define ("DB_USERNAME","root");
 define ("DB_PASSWORD","");
 define ("DB_NAME","ourproject");
-define ("testing","http://localhost/ourProject/ourProject/testing.php");
-//hagay
+
+//connector between pages//
+define ("DOC_ROOT","http://localhost/localOProject/");
+define ("LINK","login.php");
+//end//
+
 //end of define part//
 
 
@@ -49,8 +53,9 @@ else{
 	printf("<br/>");
 	printf("go back");
 	printf("<br/>");
-	printf('<a href="http://localhost/ourProject/ourProject/testing.php">login.php</a>');
+	echo'<a href='.DOC_ROOT.LINK.'>'.LINK.'</a>';
 }
+//C:\wamp\www\localOProject\testing.php
 //open connection//
 // $mySqliCon=openMySqliConnect();
 

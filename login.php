@@ -12,6 +12,6 @@
 		password: 	<input type="text" name="pass"/><br/>
 		<input type="submit" name="submit"/>
 </body>
-	<p>	משתמש חדש?<a href="http://localhost/ourProject/ourProject/testing.php">לחץ כאן!</a></p>	
+	<p>	משתמש חדש?<a href="http://localhost/localOProject/testing.php">לחץ כאן!</a></p>	
 	</form>
 	
