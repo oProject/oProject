@@ -1,11 +1,15 @@
 <?php
 //hagay
 //select scripts for protb//
-
 define ("DB_HOST","localhost");
 define ("DB_USERNAME","root");
 define ("DB_PASSWORD","");
 define ("DB_NAME","ourproject");
+
+//connector between pages//
+define ("DOC_ROOT","http://localhost/localOProject/");
+define ("LINK","addPro.php");
+//end//
 
 if((isset($_POST['profession'])) and (!empty($_POST['profession']))){
 	$profession = $_POST['profession'];
@@ -18,8 +22,7 @@ if((isset($_POST['profession'])) and (!empty($_POST['profession']))){
 	if ((proValid($profession))==true){
 		printf("this profession '$profession' exist!");
 		printf("<br/>");
-		printf("<a href=http://localhost/ourProject/ourProject/addPro.php>addPro.php</a>");
-
+		echo'<a href='.DOC_ROOT.LINK.'>'.LINK.'</a>';
 	}
 	//if not exist add to database this profession//
 	else {
@@ -27,7 +30,7 @@ if((isset($_POST['profession'])) and (!empty($_POST['profession']))){
 		printf("<br/>");
 		printf("go back");
 		printf("<br/>");
-		printf("<a href=http://localhost/ourProject/ourProject/addPro.php>addPro.php</a>");
+		echo'<a href='.DOC_ROOT.LINK.'>'.LINK.'</a>';
 	}
 
 	//close connection//
@@ -37,7 +40,7 @@ else {
 	printf("<br/>");
 	printf("go back");
 	printf("<br/>");
-	printf("<a href=http://localhost/ourProject/ourProject/addPro.php>addPro.php</a>");
+	echo'<a href='.DOC_ROOT.LINK.'>'.LINK.'</a>';
 }
 
 /**
