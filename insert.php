@@ -1,12 +1,15 @@
 <?php 
-//hagay
 
 //defines attributes//
 define ("DB_HOST","localhost");
 define ("DB_USERNAME","root");
 define ("DB_PASSWORD","");
 define ("DB_NAME","ourproject");
+define ("DOC_ROOT","http://localhost/localOProject/");
+define ("LINK","testing.php");
+
 //end of define part//
+//main//
 $error=null;
 if((isset($_POST['user'])) and (!empty($_POST['user']))){
 	$user = $_POST['user'];
@@ -83,7 +86,13 @@ else
 printf("<br/>");
 printf("go back");
 printf("<br/>");
-printf('<a href="http://localhost/ourProject/ourProject/testing.php">testing.php</a>');
+echo '<a href="'.DOC_ROOT.LINK.'">'.LINK.'</a>';
+
+//end of main//
+
+
+//start of function//
+
 /**
  * this method create a connection to the serevr
  * using mysqli connector.
