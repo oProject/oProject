@@ -8,7 +8,7 @@ define ("DB_NAME","ourproject");
 
 //connector between pages//
 define ("DOC_ROOT","http://localhost/localOProject/");
-define ("LINK","addPro.php");
+define ("ADD_PRO","addPro.php");
 //end//
 
 if((isset($_POST['profession'])) and (!empty($_POST['profession']))){
@@ -22,7 +22,7 @@ if((isset($_POST['profession'])) and (!empty($_POST['profession']))){
 	if ((proValid($profession))==true){
 		printf("this profession '$profession' exist!");
 		printf("<br/>");
-		echo'<a href='.DOC_ROOT.LINK.'>'.LINK.'</a>';
+		echo'<a href='.DOC_ROOT.ADD_PRO.'>'.ADD_PRO.'</a>';
 	}
 	//if not exist add to database this profession//
 	else {
@@ -30,7 +30,7 @@ if((isset($_POST['profession'])) and (!empty($_POST['profession']))){
 		printf("<br/>");
 		printf("go back");
 		printf("<br/>");
-		echo'<a href='.DOC_ROOT.LINK.'>'.LINK.'</a>';
+		echo'<a href='.DOC_ROOT.ADD_PRO.'>'.ADD_PRO.'</a>';
 	}
 
 	//close connection//
@@ -40,7 +40,7 @@ else {
 	printf("<br/>");
 	printf("go back");
 	printf("<br/>");
-	echo'<a href='.DOC_ROOT.LINK.'>'.LINK.'</a>';
+	echo'<a href='.DOC_ROOT.ADD_PRO.'>'.ADD_PRO.'</a>';
 }
 
 /**

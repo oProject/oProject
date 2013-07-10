@@ -3,7 +3,6 @@
 	<h1>welcome to porjectX</h1>
 	<h1>admin entry</h1>
 	<h2>server entry</h2>
-
 		
 		<a href="http://localhost/ourProject/ourProject/addPro.php">addPro.php</a>
 		<br/><br/>

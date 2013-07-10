@@ -5,9 +5,10 @@ define ("DB_HOST","localhost");
 define ("DB_USERNAME","root");
 define ("DB_PASSWORD","");
 define ("DB_NAME","ourproject");
-define ("DOC_ROOT","http://localhost/localOProject/");
-define ("LINK","testing.php");
 
+//link shortcut//
+define ("DOC_ROOT","http://localhost/localOProject/");
+define ("TESTING","testing.php");
 //end of define part//
 //main//
 $error=null;
@@ -86,7 +87,7 @@ else
 printf("<br/>");
 printf("go back");
 printf("<br/>");
-echo '<a href="'.DOC_ROOT.LINK.'">'.LINK.'</a>';
+echo '<a href="'.DOC_ROOT.TESTING.'">'.TESTING.'</a>';
 
 //end of main//
 
