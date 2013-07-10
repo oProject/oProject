@@ -7,7 +7,7 @@ define ("DB_NAME","ourproject");
 
 //connector between pages//
 define ("DOC_ROOT","http://localhost/localOProject/");
-define ("LINK","login.php");
+define ("LOGIN","login.php");
 //end//
 
 //end of define part//
@@ -53,7 +53,7 @@ else{
 	printf("<br/>");
 	printf("go back");
 	printf("<br/>");
-	echo'<a href='.DOC_ROOT.LINK.'>'.LINK.'</a>';
+	echo'<a href='.DOC_ROOT.LOGIN.'>'.LOGIN.'</a>';
 }
 //C:\wamp\www\localOProject\testing.php
 //open connection//
