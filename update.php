@@ -4,13 +4,14 @@ define ("DB_HOST","localhost");
 define ("DB_USERNAME","root");
 define ("DB_PASSWORD","");
 define ("DB_NAME","ourproject");
+define ("testing","http://localhost/ourProject/ourProject/testing.php");
 //hagay
 //end of define part//
 
 
 $error=null;
 if((isset($_POST['user'])) and (!empty($_POST['user']))){
-  $user = $_POST['user'];
+	$user = $_POST['user'];
 }
 else
 	$error=$error."user is empty,";
@@ -18,29 +19,30 @@ if((isset($_POST['pass'])) and (!empty($_POST['pass'])))
 	$pass = $_POST['pass'];
 else
 	$error=$error." password is empty,";
-if(checkPrams($user, $pass)){
-	
-	//data from server//
-	printf('user Name: 					<input type="text" name="user" value=.$user/><br/>');
-	printf('wanted website name: 		<input type="text" name="wName"/><br/>');
-	printf('password: 					<input type="text" name="pass"/><br/>');
-	printf('email: 						<input type="text" name="mail"/><br/>');
-	printf('first name: 				<input type="text" name="fName"/><br/>');
-	printf('last name: 					<input type="text" name="lName"/><br/>');
-	printf('mobile phone: 				<input type="text" name="mPhone"/><br/>');
-	printf('home phone: 				<input type="text" name="hPhone"/><br/>');
-	printf('fax number: 				<input type="text" name="fax"/><br/>');
-	printf('primery profession: 		<input type="text" name="fProId"/><br/>');
-	printf('secondery profession:		<input type="text" name="sProId"/><br/>');
-	printf('third profession: 			<input type="text" name="tProId"/><br/>');
-	
-	
-	
-	printf('success');
-	
-	
-	
-	
+if ($error==null){
+	if(checkPrams($user, $pass)){
+
+		//data from server//
+		printf('user Name: 					<input type="text" name="user" value=.$user/><br/>');
+		printf('wanted website name: 		<input type="text" name="wName"/><br/>');
+		printf('password: 					<input type="text" name="pass"/><br/>');
+		printf('email: 						<input type="text" name="mail"/><br/>');
+		printf('first name: 				<input type="text" name="fName"/><br/>');
+		printf('last name: 					<input type="text" name="lName"/><br/>');
+		printf('mobile phone: 				<input type="text" name="mPhone"/><br/>');
+		printf('home phone: 				<input type="text" name="hPhone"/><br/>');
+		printf('fax number: 				<input type="text" name="fax"/><br/>');
+		printf('primery profession: 		<input type="text" name="fProId"/><br/>');
+		printf('secondery profession:		<input type="text" name="sProId"/><br/>');
+		printf('third profession: 			<input type="text" name="tProId"/><br/>');
+
+
+
+		printf('success');
+
+
+
+	}
 }
 else{
 	printf($error);

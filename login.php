@@ -6,12 +6,12 @@
 	<h1>welcome to porjectX</h1>
 	<h1>login page</h1>
 
-	<p>ξμΰ τψθιν ελπρ μξςψλϊ:</p>
+	<p>Χ”Χ›Χ Χ΅ Χ©Χ ΧΧ©ΧªΧΧ© Χ•Χ΅Χ™Χ΅ΧΧ:</p>
 	<form method="post" action="update.php">
 		user Name: 	<input type="text" name="user"/><br/>
 		password: 	<input type="text" name="pass"/><br/>
 		<input type="submit" name="submit"/>
 </body>
-	<p>	ξωϊξω ηγω? <a href="http://localhost/ourProject/ourProject/testing.php">μηυ λΰο</a></p>	
+	<p>	ΧΧ©ΧªΧΧ© Χ—Χ“Χ©?<a href="http://localhost/ourProject/ourProject/testing.php">ΧΧ—Χ¥ Χ›ΧΧ!</a></p>	
 	</form>
 	
