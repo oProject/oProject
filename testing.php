@@ -4,7 +4,7 @@
 	<h1>admin entry</h1>
 	<h2>server entry</h2>
 		
-		<a href="http://localhost/ourProject/ourProject/addPro.php">addPro.php</a>
+		<a href="http://localhost/localOProject/addPro.php">addPro.php</a>
 		<br/><br/>
 	<form method="post" action="Insert.php">
 		user Name: 					<input type="text" name="user"/><br/>
