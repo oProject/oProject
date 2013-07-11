@@ -27,25 +27,20 @@ if ($error==null){
 	if(checkPrams($user, $pass)){
 
 		//data from server//
-		printf('user Name: 					<input type="text" name="user" value=.$user/><br/>');
-		printf('wanted website name: 		<input type="text" name="wName"/><br/>');
-		printf('password: 					<input type="text" name="pass"/><br/>');
-		printf('email: 						<input type="text" name="mail"/><br/>');
-		printf('first name: 				<input type="text" name="fName"/><br/>');
-		printf('last name: 					<input type="text" name="lName"/><br/>');
-		printf('mobile phone: 				<input type="text" name="mPhone"/><br/>');
-		printf('home phone: 				<input type="text" name="hPhone"/><br/>');
-		printf('fax number: 				<input type="text" name="fax"/><br/>');
-		printf('primery profession: 		<input type="text" name="fProId"/><br/>');
-		printf('secondery profession:		<input type="text" name="sProId"/><br/>');
-		printf('third profession: 			<input type="text" name="tProId"/><br/>');
-
-
-
+		echo 'user Name: 					<input type="text" name="user" value='.$user.'><br/>';
+		$wName=returnParams($wName,$user,$pass);
+		echo 'wanted website name: 			<input type="text" name="wName" value='.$wName.'><br/>';
+		echo 'password: 					<input type="text" name="pass" value='.$pass.'><br/>';
+		echo 'email: 						<input type="text" name="mail" value='.$mail.'><br/>';
+		echo 'first name: 				<input type="text" name="Name" value='.$name.'><br/>';
+		echo 'last name: 					<input type="text" name="lName" value='.$lName.'><br/>';
+		echo 'mobile phone: 				<input type="text" name="mPhone" value='.$mPhone.'><br/>';
+		echo 'home phone: 				<input type="text" name="hPhone" value='.$hPhone.'><br/>';
+		echo 'fax number: 				<input type="text" name="fax" value='.$fax.'><br/>';
+		echo 'primery profession: 		<input type="text" name="fProId" value='.$fProId.'><br/>';
+		echo 'secondery profession:		<input type="text" name="sProId" value='.$sProId.'><br/>';
+		echo 'third profession: 			<input type="text" name="tProId" value='.$tProId.'><br/>';
 		printf('success');
-
-
-
 	}
 }
 else{
@@ -67,6 +62,16 @@ else{
 // printf('<br/>');
 // printf('//end update record//');
 // printf('<br/>');
+
+
+function returnParams($val,$user,$pass){
+	$sql="select user,wName,pass,mail,fName
+	,lName,mPhone,hPhone,fax,fProId,sProId,
+	tProId from client where user=$user and pass=$pass";
+
+	return $val;
+
+}
 
 
 function updateDataClient ($mySqliCon,$user,$wName,$pass,
