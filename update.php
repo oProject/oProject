@@ -27,11 +27,11 @@ if ($error==null){
 	if(checkPrams($user, $pass)){
 
 		$row=returnParams($user, $pass);
-		
+
 		//testing whats comming back//
 		// 		print_r($row);
-		
 		//		data from server	//
+		
 		echo 'user Name: 						<input type="text" name="user" value='.$user.'><br/>';
 		echo 'wanted website name: 				<input type="text" name="wName" value='.$wName=$row['wName'].'><br/>';
 		echo 'password: 						<input type="text" name="pass" value='.$pass.'><br/>';
@@ -44,8 +44,8 @@ if ($error==null){
 		echo 'primery profession: 				<input type="text" name="fProId" value='.$fProId=$row['fPro'].'><br/>';
 		echo 'secondery profession:				<input type="text" name="sProId" value='.$sProId=$row['sPro'].'><br/>';
 		echo 'third profession: 				<input type="text" name="tProId" value='.$tProId=$row['thirdPro'].'><br/>';
+		// 		printf('success')		//
 
-		// 		printf('success');
 	}
 }
 else{
@@ -144,12 +144,6 @@ function openMySqliConnect(){
 	// 	else echo "success";
 	return $con;
 }
-
-
-
-
-
-
 
 
 function updateDataClient ($mySqliCon,$user,$wName,$pass,
