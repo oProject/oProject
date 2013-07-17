@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 include 'globalDefine.php';
 include 'globalFunction.php';
 
@@ -8,7 +7,18 @@ define ("DOC_ROOT","http://localhost/localOProject/");
 define ("TESTING","testing.php");
 //end of define part//
 //main//
+
 $error=null;
+
+if((isset($_POST['loginUser'])) and (!empty($_POST['loginUser']))){
+	$loginUser = $_POST['loginUser'];
+}
+else
+	$error=$error."loginUser is empty,";
+if((isset($_POST['loginPass'])) and (!empty($_POST['loginPass'])))
+	$loginPass = $_POST['loginPass'];
+else
+	$error=$error."loginPassword is empty.";
 if((isset($_POST['user'])) and (!empty($_POST['user']))){
 	$user = $_POST['user'];
 }
@@ -26,10 +36,12 @@ if((isset($_POST['mail'])) and (!empty($_POST['mail'])))
 	$mail = $_POST['mail'];
 else
 	$error=$error." email is empty,";
+
 if((isset($_POST['fName'])) and (!empty($_POST['fName'])))
 	$fName = $_POST['fName'];
 else
 	$error=$error." first Name is empty,";
+
 if((isset($_POST['lName'])) and (!empty($_POST['lName'])))
 	$lName = $_POST['lName'];
 else
@@ -58,33 +70,35 @@ if((isset($_POST['tProId'])) and (!empty($_POST['tProId'])))
 	$thirdPro = $_POST['tProId'];
 else
 	$error=$error." third profession is empty";
+
 if ($error==null){
 	printf('//open connection//');
 	$mySqliCon = openMySqliConnect();
 	printf('<br/>');
-	printf('//inset record//');
+	printf('//check if record is valid//');
 	printf('<br/>');
-
-	$check=recordValid($mySqliCon, $user, $wName, $pass, $mail, $fName,
-			$lName, $mPhone, $hPhone, $fax, $fPro, $sPro, $thirdPro);
-	if ($check==null)
-		insertDataRecord($mySqliCon, $user, $wName, $pass,
-				$mail, $fName, $lName, $mPhone, $hPhone,
-				$fax, $fPro, $sPro, $thirdPro);
-	else{
-		printf($check);
+	
+	$check=updateRecordValid($mySqliCon, $loginUser,$loginPass, $user, $pass);
+	echo $check;
+	if ($check==null){
+		echo 'valid';
+		//update recordset//
+		updateDataClient($mySqliCon,$loginPass, $loginUser,$user, $wName, $pass, $mail, $fName,$lName, $mPhone, $hPhone, $fax, $fPro,$sPro, $thirdPro);
 	}
-	printf('<br/>');
-	printf('//end insert record//');
-	//close connection//
-	mysqli_close($mySqliCon);
-}
-else
+// 	else{
+// 		printf($check);
+// 		printf('<br/>');
+// 		printf('//end insert record//');
+// 		//close connection//
+// 		mysqli_close($mySqliCon);
+// 	}
+// }
+// else{
 	printf($error);
-printf("<br/>");
-printf("go back");
-printf("<br/>");
-echo '<a href="'.DOC_ROOT.TESTING.'">'.TESTING.'</a>';
-
+	printf("<br/>");
+	printf("go back");
+	printf("<br/>");
+	echo '<a href="'.DOC_ROOT.TESTING.'">'.TESTING.'</a>';
+}
 //end of main//
 ?>
