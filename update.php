@@ -26,21 +26,26 @@ else
 if ($error==null){
 	if(checkPrams($user, $pass)){
 
-		//data from server//
-		echo 'user Name: 					<input type="text" name="user" value='.$user.'><br/>';
-		$wName=returnParams($wName,$user,$pass);
-		echo 'wanted website name: 			<input type="text" name="wName" value='.$wName.'><br/>';
-		echo 'password: 					<input type="text" name="pass" value='.$pass.'><br/>';
-		echo 'email: 						<input type="text" name="mail" value='.$mail.'><br/>';
-		echo 'first name: 				<input type="text" name="Name" value='.$name.'><br/>';
-		echo 'last name: 					<input type="text" name="lName" value='.$lName.'><br/>';
-		echo 'mobile phone: 				<input type="text" name="mPhone" value='.$mPhone.'><br/>';
-		echo 'home phone: 				<input type="text" name="hPhone" value='.$hPhone.'><br/>';
-		echo 'fax number: 				<input type="text" name="fax" value='.$fax.'><br/>';
-		echo 'primery profession: 		<input type="text" name="fProId" value='.$fProId.'><br/>';
-		echo 'secondery profession:		<input type="text" name="sProId" value='.$sProId.'><br/>';
-		echo 'third profession: 			<input type="text" name="tProId" value='.$tProId.'><br/>';
-		printf('success');
+		$row=returnParams($user, $pass);
+		
+		//testing whats comming back//
+		// 		print_r($row);
+		
+		//		data from server	//
+		echo 'user Name: 						<input type="text" name="user" value='.$user.'><br/>';
+		echo 'wanted website name: 				<input type="text" name="wName" value='.$wName=$row['wName'].'><br/>';
+		echo 'password: 						<input type="text" name="pass" value='.$pass.'><br/>';
+		echo 'email: 							<input type="text" name="mail" value='.$mail=$row['mail'].'><br/>';
+		echo 'first name: 						<input type="text" name="Name" value='.$name=$row['fName'].'><br/>';
+		echo 'last name: 						<input type="text" name="lName" value='.$lName=$row['lName'].'><br/>';
+		echo 'mobile phone: 					<input type="text" name="mPhone" value='.$mPhone=$row['mPhone'].'><br/>';
+		echo 'home phone: 						<input type="text" name="hPhone" value='.$hPhone=$row['hPhone'].'><br/>';
+		echo 'fax number: 						<input type="text" name="fax" value='.$fax=$row['fax'].'><br/>';
+		echo 'primery profession: 				<input type="text" name="fProId" value='.$fProId=$row['fPro'].'><br/>';
+		echo 'secondery profession:				<input type="text" name="sProId" value='.$sProId=$row['sPro'].'><br/>';
+		echo 'third profession: 				<input type="text" name="tProId" value='.$tProId=$row['thirdPro'].'><br/>';
+
+		// 		printf('success');
 	}
 }
 else{
@@ -50,28 +55,101 @@ else{
 	printf("<br/>");
 	echo'<a href='.DOC_ROOT.LOGIN.'>'.LOGIN.'</a>';
 }
-//C:\wamp\www\localOProject\testing.php
-//open connection//
-// $mySqliCon=openMySqliConnect();
 
-// printf('<br/>');
-// printf('//update record//');
-// updateDataClient($mySqliCon, $user, $wName, $pass,
-// 		$mail, $fName, $lName, $mPhone, $hPhone,
-// 		$fax, $fPro, $sPro, $thirdPro);
-// printf('<br/>');
-// printf('//end update record//');
-// printf('<br/>');
+/**
+ *
+ * @param unknown_type $val
+ * @param unknown_type $user
+ * @param unknown_type $pass
+ */
+function returnParams($user, $pass){
+
+	// 		, $wName, $mail,
+	// 		$lName, $mPhone, $hPhone, $fax,
+	// 		$fPro, $sPro,$thirdPro){
+
+	$link = openMySqliConnect();
+	/* check connection */
+	if (mysqli_connect_errno()) {
+		printf("Connect failed: %s\n", mysqli_connect_error());
+		exit();
+	}
+
+	$query = "SELECT * FROM client";
+
+	$result = $link->query($query);
+
+	$row = $result->fetch_array(MYSQLI_ASSOC);
+	return $row;
+	// 	printf ("%s (%s)\n", $row["Name"], $row["CountryCode"]);
+
+	// 	if ($result = mysqli_query($link, $query)) {
+
+	// 		/* fetch associative array */
+	// 		while ($obj = mysqli_fetch_object($result)) {
+	// 			printf("<br/>");
+	// 			$wName=$obj->wName;
+	// 			$mail=$obj->mail;
+	// 			$fName=$obj->fName;
+	// 			$lName=$obj->lName;
+	// 			$mPhone=$obj->mPhone;
+	// 			$hPhone=$obj->hPhone;
+	// 			$fax=$obj->fax;
+	// 			$fPro=$obj->fPro;
+	// 			$sPro=$obj->sPro;
+	// 			$thirdPro=$obj->thirdPro;
+
+	// 			array($wName,$mail,$fName, $lName,$mPhone,$hPhone,$fax,$fPro,$sPro,$thirdPro);
 
 
-function returnParams($val,$user,$pass){
-	$sql="select user,wName,pass,mail,fName
-	,lName,mPhone,hPhone,fax,fProId,sProId,
-	tProId from client where user=$user and pass=$pass";
+	// 			// 			printf ($wName."   ".$mail."   ".$fName."   ".$lName."   ".$mPhone."   ".$hPhone."   ".$fax."   ".$fPro."   ".$sPro."   ".$thirdPro);
+	// 			// 			printf("<br/>");
+	// 		}
+	// 		/* free result set */
+	// 		mysqli_free_result($result);
+	// 		return array();
+	// 	}
 
-	return $val;
+	// 	$result = mysql_query("select * from client");
+	// 	while ($row = mysql_fetch_object($result)) {
+	// 		echo $row->user_id;
+	// 		echo $row->fullname;
+	// 	}
+	// 	mysql_free_result($result);
 
+
+	// 	$result = $link->query ("SELECT * FROM client" );
+	// 	while($row = $result->fetch_array() != NULL) {
+	// 		print debugit($row);
+	// 	}
+	// 	print debugit ( $result->fetch_all () );
 }
+
+function debugit($value) {
+	return '<pre>' . print_r ( $value, TRUE ) . '</pre>';
+}
+
+
+
+/**
+ * this method create a connection to the serevr
+ * using mysqli connector.
+ * return a valid connector for the server.
+ */
+function openMySqliConnect(){
+	$con = mysqli_connect(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME);
+	if (!$con){
+		die('Could not connect: ' . mysql_error());
+	}
+	// 	else echo "success";
+	return $con;
+}
+
+
+
+
+
+
 
 
 function updateDataClient ($mySqliCon,$user,$wName,$pass,
