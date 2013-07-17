@@ -19,6 +19,5 @@
 		primery profession: 		<input type="text" name="fProId"/><br/>
 		secondery profession:		<input type="text" name="sProId"/><br/>
 		third profession: 			<input type="text" name="tProId"/><br/>
-
 	<input type="submit" name="submit"/>
 </form>
