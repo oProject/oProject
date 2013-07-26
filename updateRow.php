@@ -77,23 +77,26 @@ if ($error==null){
 	printf('<br/>');
 	printf('//check if record is valid//');
 	printf('<br/>');
-	
-	$check=updateRecordValid($mySqliCon, $loginUser,$loginPass, $user, $pass);
+
+	$check=updateRecordValid($mySqliCon, $loginUser,$loginPass,
+			$user,$wName, $pass,$mail,$fName,
+			$lName,$mPhone,$hPhone,$fax,$fPro,$sPro,$thirdPro);
 	echo $check;
 	if ($check==null){
+		printf('<br/>');
 		echo 'valid';
 		//update recordset//
-		updateDataClient($mySqliCon,$loginPass, $loginUser,$user, $wName, $pass, $mail, $fName,$lName, $mPhone, $hPhone, $fax, $fPro,$sPro, $thirdPro);
+		// 		updateDataClient($mySqliCon,$loginPass, $loginUser,$user, $wName, $pass, $mail, $fName,$lName, $mPhone, $hPhone, $fax, $fPro,$sPro, $thirdPro);
 	}
-// 	else{
-// 		printf($check);
-// 		printf('<br/>');
-// 		printf('//end insert record//');
-// 		//close connection//
-// 		mysqli_close($mySqliCon);
-// 	}
-// }
-// else{
+	// 	else{
+	// 		printf($check);
+	// 		printf('<br/>');
+	// 		printf('//end insert record//');
+	// 		//close connection//
+	// 		mysqli_close($mySqliCon);
+	// 	}
+	// }
+	// else{
 	printf($error);
 	printf("<br/>");
 	printf("go back");

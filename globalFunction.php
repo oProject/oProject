@@ -274,35 +274,86 @@ function recordValid($mySqliCon,$user,$wName,$pass,
  * this method needs to valid all of the data the
  * client enter in the update page.
  */
-function updateRecordValid($mySqliCon,$loginUser,$loginPass, $user, $pass){
+function updateRecordValid($mySqliCon, $loginUser,$loginPass,
+		$user,$wName, $pass,$mail,$fName,
+		$lName,$mPhone,$hPhone,$fax,$fPro,$sPro,$thirdPro){
 	//check the correct tb in db for this proffesion;
 	$rejction=null;
 	$link = connect();
 
 	$loginRow=returnParams($loginUser, $loginPass);
-	$insertRow=returnParams($user, $pass);
-	if (!($loginRow['user']==$insertRow['user'])){
-		printf("im here!!!");
-		if (validUser($user) == true){
-			$rejction="$rejction user name exist! ";
-		}
-	}
-	if (!($loginRow['mail']==$insertRow['mail'])){
-		printf("im here!!!");
-		if (validMail($insertRow['mail']) == true){
-			$rejction="$rejction eMail exist!";
-		}
-	}
-	if (!($loginRow['wName']==$insertRow['wName'])){
-		printf("im here!!!");
-		if (validWName($insertRow['wName']) == true){
-			$rejction="$rejction wanted web Name exist!";
-		}
-	}
+
+	$rejction=ganriValid($user, $loginUser, $rejction,1);
+	$rejction=ganriValid($wName, $loginRow['wName'], $rejction,2);
+	$rejction=ganriValid($pass, $loginRow['pass'], $rejction,3);
+	$rejction=ganriValid($mail, $loginRow['mail'], $rejction,4);
+	$rejction=ganriValid($fName, $loginRow['fName'], $rejction,0);
+	$rejction=ganriValid($lName, $loginRow['lName'], $rejction,0);
+	$rejction=ganriValid($mPhone, $loginRow['mPhone'], $rejction,5);
+	$rejction=ganriValid($hPhone, $loginRow['hPhone'], $rejction,0);
+	$rejction=ganriValid($fax, $loginRow['fax'], $rejction,0);
+	$rejction=ganriValid($fPro, $loginRow['fPro'], $rejction,0);
+	$rejction=ganriValid($sPro, $loginRow['sPro'], $rejction,0);
+	$rejction=ganriValid($thirdPro, $loginRow['thirdPro'], $rejction,0);
 	return $rejction;
 }
 
-//checks if the wanted webName is valid//
+/**
+ * this method is a ganari way to check if
+ * the element is exist in db or not.
+ *
+ * @param string $first the first param to be checked.
+ * @param string $second the param to be checked.
+ * @param string $rejction if there any error print it.
+ * @param int $num whet check infront of the database we need.
+ */
+function ganriValid($first,$second,$rejction,$num){
+	switch ($num){
+		case 0:
+			echo $first.' return false automatic';
+			printf('<br/>');
+			return false;
+			//user
+		case 1:
+			$bool=validUser($first);
+			break;
+			//wName
+		case 2:
+			$bool=validWName($first);
+			break;
+			//mail
+		case 3:
+			$bool=validPass($first);
+			break;
+			//pass
+		case 4:
+			$bool=validWName($first);
+			break;
+		case 5:
+			$bool=validMPhone($first);
+			break;
+	}
+
+	if (!($first==$second)){
+
+		printf('<br/>');
+		echo $first.' not equal dig dipper';
+		printf('<br/>');
+		if(!($bool)){
+			echo $first.' dosnt exist in db';
+			printf('<br/>');
+		}
+		else
+			$rejction="$rejction . $first . exist! ";
+	}
+	else {
+		echo $first.' without change';
+		printf('<br/>');
+		return $rejction;
+	}
+}
+
+//checks if the wanted user is valid//
 function validUser($user){
 	$result = mysql_query("SELECT user FROM client where user='$user'");
 	//if num of rows equels 0 then no row match the wanted profession.
@@ -330,6 +381,11 @@ function validWName($wName){
 		return true;
 	}
 }
+//check if the wanted pass is valid
+function validPass($pass){
+	return false;
+}
+
 //checks if the wanted mail is valid//
 function validMail($mail){
 	$result = mysql_query("SELECT mail FROM client where mail='$mail'");
@@ -343,6 +399,56 @@ function validMail($mail){
 		//profession exist in db return true for not adding it.
 		return true;
 	}
+}
+
+//check if the wanted fName is valid
+function validFName($fName){
+	return false;
+}
+
+//check if the wanted lName is valid
+function validLName($lName){
+	return false;
+}
+
+//check if the wanted mPhone is valid
+function validMPhone($mPhone){
+	$result = mysql_query("SELECT mPhone FROM client where mPhone='$mPhone'");
+	//if num of rows equels 0 then no row match the wanted profession.
+	//return false for adding it.
+	$num_rows = mysql_num_rows($result);
+	if ($num_rows == 0){
+		return false;
+	}
+	else{
+		//profession exist in db return true for not adding it.
+		return true;
+	}
+}
+
+//check if the wanted hPhone is valid
+function validHPhone($hPhone){
+	return false;
+}
+
+//check if the wanted fax is valid
+function validFax($fax){
+	return false;
+}
+
+//check if the wanted fPro is valid
+function validFPro($fPro){
+	return false;
+}
+
+//check if the wanted sPro is valid
+function validSPro($sPro){
+	return false;
+}
+
+//check if the wanted thirdPro is valid
+function validThirdPro($thirdPro){
+	return false;
 }
 
 //END sector 3: checking parames//
@@ -373,6 +479,23 @@ function returnParams($user, $pass){
 	$row = $result->fetch_array(MYSQLI_ASSOC);
 	return $row;
 }
+
+/**
+ * this method populate the pro field in the client adding.
+ */
+function populatePro(){
+$con = mysql_connect("localhost","root","");
+$db = mysql_select_db("ourproject",$con);
+$get=mysql_query("SELECT proName,proId FROM protb ORDER BY proName ASC");
+$option = '';
+while($row = mysql_fetch_assoc($get))
+{
+	$option .= '<option value = "'.$row['proName'].'">'.$row['proName'].'</option>';
+}
+return $option;
+}
+
+
 //END sector 4: return methods//
 
 ?>

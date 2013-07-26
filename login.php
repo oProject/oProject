@@ -1,4 +1,4 @@
-<html>
+<html DIR="RTL">
 <head>
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
@@ -6,12 +6,31 @@
 	<h1>welcome to porjectX</h1>
 	<h1>login page</h1>
 
-	<p>הכנס שם משתמש וסיסמא:</p>
 	<form method="post" action="update.php">
-		user Name: 	<input type="text" name="user"/><br/>
-		password: 	<input type="text" name="pass"/><br/>
-		<input type="submit" name="submit"/>
+		<h4>הכנס שם משתמש וסיסמא:</h4>
+		<table align="center" style="margin: 1px auto;">
+			<tr>
+				<td>:שם משתמש</td>
+				<td><input type="text" name="user" /></td>
+			</tr>
+			<tr>
+				<td>סיסמא:</td>
+				<td><input type="text" name="pass" /></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td align="left"><input type="submit" name="submit"/
+				
+				</td>
+			</tr>
+			<tr>
+			
+				<td>משתמש חדש?</td>
+				<td><a href="http://localhost/localOProject/testing.php"><button
+							type="button">לחץ כאן</button> </a></td>
+			</tr>
+		</table>
+
 </body>
-	<p>	משתמש חדש?<a href="http://localhost/localOProject/testing.php">לחץ כאן!</a></p>	
-	</form>
-	
+<p></p>
+</form>

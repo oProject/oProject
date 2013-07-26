@@ -49,6 +49,9 @@ if ($error==null){
 		echo '<input type="submit" name="submit"/>';
 		echo '</form>';
 	}
+	printf("user name and password u enterd isnt valid try again");
+	printf("<br/>");
+	echo'<a href='.DOC_ROOT.LOGIN.'>'.LOGIN.'</a>';
 }
 else{
 	printf($error);

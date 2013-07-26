@@ -9,6 +9,9 @@ define ("TESTING","testing.php");
 //end of define part//
 //main//
 $error=null;
+
+print_r($_POST);
+
 if((isset($_POST['user'])) and (!empty($_POST['user']))){
 	$user = $_POST['user'];
 }
@@ -46,18 +49,21 @@ if((isset($_POST['fax'])) and (!empty($_POST['fax'])))
 	$fax = $_POST['fax'];
 else
 	$error=$error." fax is empty,";
+	
+// 	$fPro = $_POST['option'];
+
 if((isset($_POST['fProId'])) and (!empty($_POST['fProId'])))
 	$fPro = $_POST['fProId'];
 else
 	$error=$error." first profession is empty,";
-if((isset($_POST['sProId'])) and (!empty($_POST['sProId'])))
-	$sPro = $_POST['sProId'];
-else
-	$error=$error." second profesion is empty,";
-if((isset($_POST['tProId'])) and (!empty($_POST['tProId'])))
-	$thirdPro = $_POST['tProId'];
-else
-	$error=$error." third profession is empty";
+// if((isset($_POST['sProId'])) and (!empty($_POST['sProId'])))
+// 	$sPro = $_POST['sProId'];
+// else
+// 	$error=$error." second profesion is empty,";
+// if((isset($_POST['tProId'])) and (!empty($_POST['tProId'])))
+// 	$thirdPro = $_POST['tProId'];
+// else
+// 	$error=$error." third profession is empty";
 if ($error==null){
 	printf('//open connection//');
 	$mySqliCon = openMySqliConnect();

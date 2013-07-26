@@ -1,8 +1,14 @@
 @CHARSET "UTF-8";
+
 body {
-	background-image:url(pic/backgrund.png)
-	
+	background-image: url(pic/backgrund.png)
 }
-h1{
-text-align:center;
+
+h1 {
+	text-align: center;
 }
+
+h4 {
+	text-align: center;
+}
+
