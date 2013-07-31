@@ -59,10 +59,9 @@ require_once 'globalFunction.php';
 			</tr>
 			<tr>
 				<td>מקצוע</td>
-				<td>
-					<select name="fProId" style="utf-8">
+				<td><select name="fProId" style="">
 						<?php $option=populatePro(); echo $option?>
-					</select>
+				</select>
 				</td>
 			</tr>
 			<tr>
