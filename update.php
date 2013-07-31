@@ -1,3 +1,13 @@
+<html DIR="RTL">
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1>welcome to porjectX</h1>
+	<h1>admin entry</h1>
+	<h2>adding profession</h2>
+
+
 <?php
 include 'globalDefine.php';
 include 'globalFunction.php';
@@ -19,10 +29,12 @@ else
 if ($error==null){
 	if(checkPrams($loginUser, $loginPass)){
 		$row=returnParams($loginUser, $loginPass);
+		$option=populatePro();
 
 		//testing whats comming back//
 		// 		print_r($row);		//
 		//		data from server	//
+		
 		echo '<form method="post" action="updateRow.php">';
 
 		echo 'original login details';
@@ -42,16 +54,20 @@ if ($error==null){
 		echo 'mobile phone: 					<input type="text" name="mPhone" value='.$mPhone=$row['mPhone'].'><br/>';
 		echo 'home phone: 						<input type="text" name="hPhone" value='.$hPhone=$row['hPhone'].'><br/>';
 		echo 'fax number: 						<input type="text" name="fax" value='.$fax=$row['fax'].'><br/>';
-		echo 'primery profession: 				<input type="text" name="fProId" value='.$fProId=$row['fPro'].'><br/>';
-		echo 'secondery profession:				<input type="text" name="sProId" value='.$sProId=$row['sPro'].'><br/>';
-		echo 'third profession: 				<input type="text" name="tProId" value='.$tProId=$row['thirdPro'].'><br/>';
+
+		echo 'primery profession: 				<select name="fProId"> '.$option.'</select><br/>';
+		// 		echo 'secondery profession:				<input type="text" name="sProId" value='.$sProId=$row['sPro'].'><br/>';
+		// 		echo 'third profession: 				<input type="text" name="tProId" value='.$tProId=$row['thirdPro'].'><br/>';
 
 		echo '<input type="submit" name="submit"/>';
 		echo '</form>';
 	}
-	printf("user name and password u enterd isnt valid try again");
-	printf("<br/>");
-	echo'<a href='.DOC_ROOT.LOGIN.'>'.LOGIN.'</a>';
+	else{
+		printf("user name and password u enterd isnt valid try again");
+		printf("<br/>");
+		echo'<a href='.DOC_ROOT.LOGIN.'>'.LOGIN.'</a>';
+	}
+
 }
 else{
 	printf($error);

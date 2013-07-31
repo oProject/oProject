@@ -7,9 +7,8 @@
 	<h1>admin entry</h1>
 	<h2>adding profession</h2>
 
-
 	<br />
-	<form method="post" action="InsertPro.php">
+	<form method="post" action="insertErr.php">
 		<table border="1" align="center" style="margin: 1px auto;">
 			<tr>
 				<td><a href="http://localhost/localOProject/testing.php"><button
@@ -20,8 +19,8 @@
 				</td>
 			</tr>
 			<tr>
-				<td>הכנס מקצוע:</td>
-				<td><input type="text" name="profession" /></td>
+				<td>הכנס שם שגיאה:</td>
+				<td><input type="text" name="err"/></td>
 			</tr>
 			<tr>
 				<td></td>

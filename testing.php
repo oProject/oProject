@@ -13,7 +13,7 @@ require_once 'globalFunction.php';
 	<br />
 	<br />
 	<form method="post" action="Insert.php">
-		<table align="center" style="margin: 1px auto;">
+		<table border="1" align="center" style="margin: 1px auto;">
 			<tr>
 				<td><a href="http://localhost/localOProject/addPro.php"><button
 							type="button">addPro.php</button> </a></td>
@@ -59,13 +59,13 @@ require_once 'globalFunction.php';
 			</tr>
 			<tr>
 				<td>מקצוע</td>
-				<td><select name="fProId"><?php $option=populatePro(); 
-									echo $option?>
-				</select><br />
+				<td>
+					<select name="fProId" style="utf-8">
+						<?php $option=populatePro(); echo $option?>
+					</select>
 				</td>
 			</tr>
 			<tr>
-
 				<td></td>
 				<td align="left"><input type="submit" name="submit" /></td>
 			</tr>

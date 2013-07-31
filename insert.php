@@ -1,5 +1,4 @@
 <?php 
-
 include 'globalDefine.php';
 include 'globalFunction.php';
 
@@ -49,13 +48,14 @@ if((isset($_POST['fax'])) and (!empty($_POST['fax'])))
 	$fax = $_POST['fax'];
 else
 	$error=$error." fax is empty,";
-	
-// 	$fPro = $_POST['option'];
 
+// 	$fPro = $_POST['option'];
 if((isset($_POST['fProId'])) and (!empty($_POST['fProId'])))
-	$fPro = $_POST['fProId'];
+	$fPro = $_POST['fProId'];	
 else
-	$error=$error." first profession is empty,";
+	$error=$error." first profession is empty.";
+echo $fPro;
+
 // if((isset($_POST['sProId'])) and (!empty($_POST['sProId'])))
 // 	$sPro = $_POST['sProId'];
 // else
@@ -72,11 +72,11 @@ if ($error==null){
 	printf('<br/>');
 
 	$check=recordValid($mySqliCon, $user, $wName, $pass, $mail, $fName,
-			$lName, $mPhone, $hPhone, $fax, $fPro, $sPro, $thirdPro);
+			$lName, $mPhone, $hPhone, $fax, $fPro); //, $sPro, $thirdPro
 	if ($check==null)
 		insertDataRecord($mySqliCon, $user, $wName, $pass,
 				$mail, $fName, $lName, $mPhone, $hPhone,
-				$fax, $fPro, $sPro, $thirdPro);
+				$fax, $fPro);//, $sPro, $thirdPro
 	else{
 		printf($check);
 	}

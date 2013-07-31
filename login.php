@@ -8,26 +8,34 @@
 
 	<form method="post" action="update.php">
 		<h4>הכנס שם משתמש וסיסמא:</h4>
-		<table align="center" style="margin: 1px auto;">
+		<table border="1" align="center" style="margin: 1px auto;">
+			<tr>
+				<td><a href="http://localhost/localOProject/addPro.php"><button
+							type="button">addPro.php</button> </a></td>
+				<td><a href="http://localhost/localOProject/testing.php"><button
+							type="button">testing.php</button> </a></td>
+			</tr>
 			<tr>
 				<td>:שם משתמש</td>
-				<td><input type="text" name="user" /></td>
+				<td><input type="text" name="user" />
+				</td>
 			</tr>
 			<tr>
 				<td>סיסמא:</td>
-				<td><input type="text" name="pass" /></td>
+				<td><input type="text" name="pass" />
+				</td>
 			</tr>
 			<tr>
 				<td></td>
-				<td align="left"><input type="submit" name="submit"/
+				<td align="left"><input type="submit" name="submit"
 				
 				</td>
 			</tr>
 			<tr>
-			
 				<td>משתמש חדש?</td>
 				<td><a href="http://localhost/localOProject/testing.php"><button
-							type="button">לחץ כאן</button> </a></td>
+							type="button">לחץ כאן</button> </a>
+				</td>
 			</tr>
 		</table>
 

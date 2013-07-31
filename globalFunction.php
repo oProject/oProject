@@ -1,6 +1,4 @@
 <?php
-
-
 //sector 1: connecting //
 /**
  * this method open a link object to the data base.
@@ -13,6 +11,7 @@ function connect(){
 	if (!mysql_select_db(DB_NAME)) {
 		die('Could not select database: ' . mysql_error());
 	}
+	mysql_set_charset('utf8',$link);
 	return $link;
 }
 
@@ -27,8 +26,12 @@ function openMySqliConnect(){
 		die('Could not connect: ' . mysql_error());
 	}
 	//	else echo "success";
+	mysqli_set_charset($con,'utf8');
+	if (!$con->set_charset("utf8"))
+		printf("Error loading character set utf8: %s\n", $con->error);
 	return $con;
 }
+
 
 //END sector 1: connecting//
 
@@ -179,8 +182,9 @@ function proValid($profession){
  */
 function insertProRecord ($mySqliCon,$profession){
 
-	$sql="INSERT INTO protb (proName)
+	$sql="INSERT INTO proTb (proName)
 	VALUES ('$profession')";
+	echo $sql;
 	if (!mysqli_query($mySqliCon,$sql))
 	{
 		die('Error: ' . mysqli_error($mySqliCon));
@@ -206,12 +210,13 @@ function insertProRecord ($mySqliCon,$profession){
  */
 function insertDataRecord ($mySqliCon,$user,$wName,$pass,
 		$mail,$fName,$lName,$mPhone,
-		$hPhone,$fax,$fPro,$sPro,$thirdPro){
+		$hPhone,$fax,$fPro){//,$sPro,$thirdPro
 
+	////,sPro,thirdPro
 	$sql="INSERT INTO client (user,wName,pass,mail,fName,lName
-	,mPhone,hPhone,fax,fPro,sPro,thirdPro)
+	,mPhone,hPhone,fax,fPro)
 	VALUES ('$user','$wName','$pass','$mail','$fName','$lName',
-	'$mPhone','$hPhone','$fax','$fPro','$sPro','$thirdPro')";
+	'$mPhone','$hPhone','$fax','$fPro')";
 	if (!mysqli_query($mySqliCon,$sql))
 	{
 		die('Error: ' . mysqli_error($mySqliCon));
@@ -254,7 +259,7 @@ function checkPrams($user, $pass){
  */
 function recordValid($mySqliCon,$user,$wName,$pass,
 		$mail,$fName,$lName,$mPhone,
-		$hPhone,$fax,$fPro,$sPro,$thirdPro){
+		$hPhone,$fax,$fPro){//,$sPro,$thirdPro
 	//check the correct tb in db for this proffesion;
 	$rejction=null;
 	$link = connect();
@@ -484,18 +489,109 @@ function returnParams($user, $pass){
  * this method populate the pro field in the client adding.
  */
 function populatePro(){
-$con = mysql_connect("localhost","root","");
-$db = mysql_select_db("ourproject",$con);
-$get=mysql_query("SELECT proName,proId FROM protb ORDER BY proName ASC");
-$option = '';
-while($row = mysql_fetch_assoc($get))
-{
-	$option .= '<option value = "'.$row['proName'].'">'.$row['proName'].'</option>';
-}
-return $option;
+	$con = mysql_connect("localhost","root","");
+	mysql_set_charset('utf8',$con);
+
+	$db = mysql_select_db("ourproject",$con);
+	$get=mysql_query("SELECT proName,proId FROM protb ORDER BY proName ASC");
+	$option = '';
+	while($row = mysql_fetch_assoc($get))
+	{
+		$option .= '<option value = "'.$row['proName'].'">'.$row['proName'].'</option>';
+	}
+	return $option;
 }
 
 
 //END sector 4: return methods//
+
+
+//sector 5//
+//error table//
+//adding val to the list//
+//adding errors for error table in data base;
+/**
+ * this method check if the profession exist in profession TB;
+ * @param string $profession
+ * @return boolean true if profession exist or flase if not.
+ */
+function errValid($error){
+	$link = connect();
+	//check the correct tb in db for this proffesion;
+	$result = mysql_query("SELECT error FROM errtb where error='$error'");
+	if (!$result) {
+		die('Could not query:' . mysql_error());
+	}
+	else{
+		//if num of rows equels 0 then no row match the wanted profession.
+		//return false for adding it.
+		$num_rows = mysql_num_rows($result);
+		if ($num_rows == 0){
+			mysql_close($link);
+			return false;
+		}
+		else{
+			//profession exist in db return true for not adding it.
+			mysql_close($link);
+			return true;
+		}
+	}
+}
+
+/**
+ * this method add a record for the tb Error.
+ *
+ * @param mysqli_connecot $mySqliCon a connector for the database;
+ * @param String $Err the wanted error to add;
+ */
+function insertErrRecord ($mySqliCon,$error){
+
+	$sql="INSERT INTO errtb (error)
+	VALUES ('$error')";
+	echo $sql;
+	if (!mysqli_query($mySqliCon,$sql))
+	{
+		die('Error: ' . mysqli_error($mySqliCon));
+	}
+	echo "1 record added";
+}
+
+//exrecting val from the list//
+
+/**
+ *
+ * @param unknown_type $mySqliCon
+ * @param unknown_type $errID
+ */
+function exrectingError ($mySqliCon,$errID){
+
+	$link = openMySqliConnect();
+	
+
+	/* check connection */
+	if (mysqli_connect_errno()) {
+		printf("Connect failed: %s\n", mysqli_connect_error());
+		exit();
+	}
+	$query = "SELECT error from errtb where errID='$errID'";
+
+	$result = $link->query($query);
+
+	$row = $result->fetch_array(MYSQLI_ASSOC);
+	return $row;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ?>
