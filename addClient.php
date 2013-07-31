@@ -10,8 +10,8 @@ require_once 'globalFunction.php';
 	<h1>welcome to porjectX</h1>
 	<h1>admin entry</h1>
 	<h2>server entry</h2>
-	<br />
-	<br />
+	<br/>
+	<br/>
 	<form method="post" action="Insert.php">
 		<table border="1" align="center" style="margin: 1px auto;">
 			<tr>
