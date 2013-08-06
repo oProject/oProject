@@ -12,8 +12,8 @@
 			<tr>
 				<td><a href="http://localhost/localOProject/addPro.php"><button
 							type="button">addPro.php</button> </a></td>
-				<td><a href="http://localhost/localOProject/testing.php"><button
-							type="button">testing.php</button> </a></td>
+				<td><a href="http://localhost/localOProject/addClient.php"><button
+							type="button">addClient.php</button> </a></td>
 			</tr>
 			<tr>
 				<td>:שם משתמש</td>
@@ -33,7 +33,7 @@
 			</tr>
 			<tr>
 				<td>משתמש חדש?</td>
-				<td><a href="http://localhost/localOProject/testing.php"><button
+				<td><a href="http://localhost/localOProject/addClient.php"><button
 							type="button">לחץ כאן</button> </a>
 				</td>
 			</tr>

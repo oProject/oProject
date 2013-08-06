@@ -11,20 +11,20 @@
 	<form method="post" action="insertErr.php">
 		<table border="1" align="center" style="margin: 1px auto;">
 			<tr>
-				<td><a href="http://localhost/localOProject/testing.php"><button
-							type="button">testing.php</button> </a>
-				</td>
+				<td><a href="http://localhost/localOProject/addClient.php"><button
+							type="button">addClient.php</button> </a></td>
 				<td><a href="http://localhost/localOProject/login.php"><button
-							type="button">login.php</button> </a>
-				</td>
+							type="button">login.php</button> </a></td>
 			</tr>
 			<tr>
 				<td>הכנס שם שגיאה:</td>
-				<td><input type="text" name="err"/></td>
+				<td><input type="text" name="err" />
+				</td>
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="submit" name="submit" /></td>
+				<td><input type="submit" name="submit" />
+				</td>
 			</tr>
 		</table>
 	</form>

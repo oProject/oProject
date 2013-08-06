@@ -12,8 +12,8 @@
 	<form method="post" action="InsertPro.php">
 		<table border="1" align="center" style="margin: 1px auto;">
 			<tr>
-				<td><a href="http://localhost/localOProject/testing.php"><button
-							type="button">testing.php</button> </a>
+				<td><a href="http://localhost/localOProject/addClient.php"><button
+							type="button">addClient.php</button> </a>
 				</td>
 				<td><a href="http://localhost/localOProject/login.php"><button
 							type="button">login.php</button> </a>

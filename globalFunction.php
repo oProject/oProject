@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * things to do:
+ * 
+ */
+
+
 //sector 1: connecting //
 /**
  * this method open a link object to the data base.
@@ -55,7 +62,7 @@ function openMySqliConnect(){
  */
 function updateDataClient ($mySqliCon,$loginPass, $loginUser,
 		$user,$wName,$pass, $mail,$fName,$lName,$mPhone,
-		$hPhone,$fax,$fPro,$sPro,$thirdPro){
+		$hPhone,$fax,$fPro){//,$sPro,$thirdPro
 	updateDataClientUser($mySqliCon, $loginUser, $loginPass, $user);
 	updateDataClientWName($mySqliCon, $loginUser, $loginPass, $wName);
 	updateDataClientPass($mySqliCon, $loginUser, $loginPass, $pass);
@@ -66,8 +73,8 @@ function updateDataClient ($mySqliCon,$loginPass, $loginUser,
 	updateDataClientHPhone($mySqliCon, $loginUser, $loginPass, $hPhone);
 	updateDataClientFax($mySqliCon, $loginUser, $loginPass, $fax);
 	updateDataClientFPro($mySqliCon, $loginUser, $loginPass, $fPro);
-	updateDataClientSPro($mySqliCon, $loginUser, $loginPass, $sPro);
-	updateDataClientsThirdPro($mySqliCon, $loginUser, $loginPass, $thirdPro);
+	// 	updateDataClientSPro($mySqliCon, $loginUser, $loginPass, $sPro);
+	// 	updateDataClientsThirdPro($mySqliCon, $loginUser, $loginPass, $thirdPro);
 	printf("</br>");
 	printf("updated 1 record");
 }
@@ -75,73 +82,73 @@ function updateDataClient ($mySqliCon,$loginPass, $loginUser,
 //update all of the client element//
 
 function updateDataClientUser ($mySqliCon,$loginUser,$loginPass,$user){
-	$sql="UPDATE client SET user='$user' WHERE user='$loginUser' and pass='$loginPass'";
+	$sql="UPDATE clientTb SET user='$user' WHERE user='$loginUser' and pass='$loginPass'";
 	// 	printf("$sql");
 	mysqli_query($mySqliCon,$sql);
 }
 
 function updateDataClientWName ($mySqliCon,$loginUser,$loginPass,$wName){
-	$sql="UPDATE client SET wName='$wName' WHERE user='$loginUser' and pass='$loginPass'";
+	$sql="UPDATE clientTb SET wName='$wName' WHERE user='$loginUser' and pass='$loginPass'";
 	// 	printf("$sql");
 	mysqli_query($mySqliCon,$sql);
 }
 
 function updateDataClientPass ($mySqliCon,$loginUser,$loginPass,$pass){
-	$sql="UPDATE client SET pass='$pass' WHERE user=$loginUser' and pass='$loginPass'";
+	$sql="UPDATE clientTb SET pass='$pass' WHERE user=$loginUser' and pass='$loginPass'";
 	// 	printf("$sql");
 	mysqli_query($mySqliCon,$sql);
 }
 
 function updateDataClientMail ($mySqliCon,$loginUser,$loginPass,$mail){
-	$sql="UPDATE client SET mail='$mail' WHERE user=$loginUser' and pass='$loginPass'";
+	$sql="UPDATE clientTb SET mail='$mail' WHERE user=$loginUser' and pass='$loginPass'";
 	// 	printf("$sql");
 	mysqli_query($mySqliCon,$sql);
 }
 
 function updateDataClientFName ($mySqliCon,$loginUser,$loginPass,$fName){
-	$sql="UPDATE client SET fName='$fName' WHERE user=$loginUser' and pass='$loginPass'";
+	$sql="UPDATE clientTb SET fName='$fName' WHERE user=$loginUser' and pass='$loginPass'";
 	// 	printf("$sql");
 	mysqli_query($mySqliCon,$sql);
 }
 
 function updateDataClientLName ($mySqliCon,$loginUser,$loginPass,$lName){
-	$sql="UPDATE client SET lName='$lName' WHERE user=$loginUser' and pass='$loginPass'";
+	$sql="UPDATE clientTb SET lName='$lName' WHERE user=$loginUser' and pass='$loginPass'";
 	// 	printf("$sql");
 	mysqli_query($mySqliCon,$sql);
 }
 
 function updateDataClientMPhone ($mySqliCon,$loginUser,$loginPass,$wName){
-	$sql="UPDATE client SET wName='$wName' WHERE user=$loginUser' and pass='$loginPass'";
+	$sql="UPDATE clientTb SET wName='$wName' WHERE user=$loginUser' and pass='$loginPass'";
 	// 	printf("$sql");
 	mysqli_query($mySqliCon,$sql);
 }
 
 function updateDataClientHPhone ($mySqliCon,$loginUser,$loginPass,$hPhone){
-	$sql="UPDATE client SET hPhone='hPhone' WHERE user=$loginUser' and pass='$loginPass'";
+	$sql="UPDATE clientTb SET hPhone='hPhone' WHERE user=$loginUser' and pass='$loginPass'";
 	// 	printf("$sql");
 	mysqli_query($mySqliCon,$sql);
 }
 
 function updateDataClientFax ($mySqliCon,$loginUser,$loginPass,$fax){
-	$sql="UPDATE client SET fax='$fax' WHERE user=$loginUser' and pass='$loginPass'";
+	$sql="UPDATE clientTb SET fax='$fax' WHERE user=$loginUser' and pass='$loginPass'";
 	// 	printf("$sql");
 	mysqli_query($mySqliCon,$sql);
 }
 
 function updateDataClientFPro ($mySqliCon,$loginUser,$loginPass,$fPro){
-	$sql="UPDATE client SET fPro='$fPro' WHERE user=$loginUser' and pass='$loginPass'";
+	$sql="UPDATE clientTb SET fPro='$fPro' WHERE user=$loginUser' and pass='$loginPass'";
 	// 	printf("$sql");
 	mysqli_query($mySqliCon,$sql);
 }
 
 function updateDataClientSPro ($mySqliCon,$loginUser,$loginPass,$sPro){
-	$sql="UPDATE client SET sPro='$sPro' WHERE user=$loginUser' and pass='$loginPass'";
+	$sql="UPDATE clientTb SET sPro='$sPro' WHERE user=$loginUser' and pass='$loginPass'";
 	// 	printf("$sql");
 	mysqli_query($mySqliCon,$sql);
 }
 
 function updateDataClientsThirdPro ($mySqliCon,$loginUser,$loginPass,$thirdPro){
-	$sql="UPDATE client SET thirdPro='$thirdPro' WHERE user=$loginUser' and pass='$loginPass'";
+	$sql="UPDATE clientTb SET thirdPro='$thirdPro' WHERE user=$loginUser' and pass='$loginPass'";
 	// 	printf("$sql");
 	mysqli_query($mySqliCon,$sql);
 }
@@ -213,7 +220,7 @@ function insertDataRecord ($mySqliCon,$user,$wName,$pass,
 		$hPhone,$fax,$fPro){//,$sPro,$thirdPro
 
 	////,sPro,thirdPro
-	$sql="INSERT INTO client (user,wName,pass,mail,fName,lName
+	$sql="INSERT INTO clientTb (user,wName,pass,mail,fName,lName
 	,mPhone,hPhone,fax,fPro)
 	VALUES ('$user','$wName','$pass','$mail','$fName','$lName',
 	'$mPhone','$hPhone','$fax','$fPro')";
@@ -234,7 +241,7 @@ function insertDataRecord ($mySqliCon,$user,$wName,$pass,
 function checkPrams($user, $pass){
 	$link = connect();
 	//check if the password and user name exist in the db.
-	$result = mysql_query("SELECT user,pass FROM client where user='$user' and pass='$pass'");
+	$result = mysql_query("SELECT user,pass FROM clientTb where user='$user' and pass='$pass'");
 	if (!$result) {
 		die('Could not query:' . mysql_error());
 	}
@@ -281,25 +288,22 @@ function recordValid($mySqliCon,$user,$wName,$pass,
  */
 function updateRecordValid($mySqliCon, $loginUser,$loginPass,
 		$user,$wName, $pass,$mail,$fName,
-		$lName,$mPhone,$hPhone,$fax,$fPro,$sPro,$thirdPro){
+		$lName,$mPhone,$hPhone,$fax,$fPro,$rejction){//,$sPro,$thirdPro
 	//check the correct tb in db for this proffesion;
-	$rejction=null;
 	$link = connect();
-
-	$loginRow=returnParams($loginUser, $loginPass);
-
-	$rejction=ganriValid($user, $loginUser, $rejction,1);
-	$rejction=ganriValid($wName, $loginRow['wName'], $rejction,2);
-	$rejction=ganriValid($pass, $loginRow['pass'], $rejction,3);
-	$rejction=ganriValid($mail, $loginRow['mail'], $rejction,4);
-	$rejction=ganriValid($fName, $loginRow['fName'], $rejction,0);
-	$rejction=ganriValid($lName, $loginRow['lName'], $rejction,0);
-	$rejction=ganriValid($mPhone, $loginRow['mPhone'], $rejction,5);
-	$rejction=ganriValid($hPhone, $loginRow['hPhone'], $rejction,0);
-	$rejction=ganriValid($fax, $loginRow['fax'], $rejction,0);
-	$rejction=ganriValid($fPro, $loginRow['fPro'], $rejction,0);
-	$rejction=ganriValid($sPro, $loginRow['sPro'], $rejction,0);
-	$rejction=ganriValid($thirdPro, $loginRow['thirdPro'], $rejction,0);
+	$loginRow = returnParams($loginUser, $loginPass);
+	$rejction = $rejction + ganriValid($user, $loginUser,$rejction,1);
+	$rejction=$rejction + ganriValid($wName, $loginRow['wName'], $rejction,2);
+	$rejction=$rejction + ganriValid($pass, $loginRow['pass'], $rejction,3);
+	$rejction=$rejction + ganriValid($mail, $loginRow['mail'], $rejction,4);
+	$rejction=$rejction + ganriValid($fName, $loginRow['fName'], $rejction,0);
+	$rejction=$rejction + ganriValid($lName, $loginRow['lName'], $rejction,0);
+	$rejction=$rejction + ganriValid($mPhone, $loginRow['mPhone'], $rejction,5);
+	$rejction=$rejction + ganriValid($hPhone, $loginRow['hPhone'], $rejction,0);
+	$rejction=$rejction + ganriValid($fax, $loginRow['fax'], $rejction,0);
+	$rejction=$rejction + ganriValid($fPro, $loginRow['fPro'], $rejction,0);
+	// 	$rejction=ganriValid($sPro, $loginRow['sPro'], $rejction,0);
+	// 	$rejction=ganriValid($thirdPro, $loginRow['thirdPro'], $rejction,0);
 	return $rejction;
 }
 
@@ -313,68 +317,125 @@ function updateRecordValid($mySqliCon, $loginUser,$loginPass,
  * @param int $num whet check infront of the database we need.
  */
 function ganriValid($first,$second,$rejction,$num){
+	$bool=null;
 	switch ($num){
 		case 0:
-			echo $first.' return false automatic';
-			printf('<br/>');
-			return false;
+			return 0;
+			break;
 			//user
 		case 1:
-			$bool=validUser($first);
-			break;
-			//wName
+			//without any change//
+			if(equal($first,$second)){
+				return 0;
+				break;
+			}
+			else if(validUser($first) == 0) {
+				//exist and cant be changed//
+				return 0;
+				break;
+			}
+			else {
+				return 1;
+				break;
+			}
+			// 			wName
 		case 2:
-			$bool=validWName($first);
-			break;
-			//mail
-		case 3:
-			$bool=validPass($first);
-			break;
+			if (equal($first,$second)){
+				return 0;
+				break;
+			}
+			else if (validWName($first) == 0){
+				return 0;
+				break;
+			}
+			else {
+				return 1;
+				break;
+			}
 			//pass
+		case 3:
+			if (equal($first,$second)){
+				return 0;
+				break;
+			}
+			else if (validPass($first) == 0){
+				return 0;
+				break;
+			}
+			else {
+				return 1;
+				break;
+			}
+			//mail
 		case 4:
-			$bool=validWName($first);
-			break;
+			if (equal($first,$second)){
+				return 0;
+				break;
+			}
+			else if (validMail($first) == 0){
+				return 0;
+				break;
+			}
+			else {
+				return 1;
+				break;
+			}
+			//mobile phone
 		case 5:
-			$bool=validMPhone($first);
-			break;
+			if (equal($first,$second)){
+				return 0;
+				break;
+			}
+			else if (validMPhone($first) == 0){
+				return 0;
+				break;
+			}
+			else {
+				return 1;
+				break;
+			}
 	}
+}
 
-	if (!($first==$second)){
-
-		printf('<br/>');
-		echo $first.' not equal dig dipper';
-		printf('<br/>');
-		if(!($bool)){
-			echo $first.' dosnt exist in db';
-			printf('<br/>');
-		}
-		else
-			$rejction="$rejction . $first . exist! ";
+/**
+ * this method dig inside and checks if its equal;
+ * if equal return true;
+ * else return false;
+ * @param String $first the first val to check;
+ * @param String $second the second val to check;
+ * @param String $rejction the rejction reason;
+ * @return string
+ */
+function equal($first,$second){
+	if ($first==$second){
+		return TRUE;
 	}
-	else {
-		echo $first.' without change';
-		printf('<br/>');
-		return $rejction;
-	}
+	else
+		return FALSE;
 }
 
 //checks if the wanted user is valid//
 function validUser($user){
-	$result = mysql_query("SELECT user FROM client where user='$user'");
-	//if num of rows equels 0 then no row match the wanted profession.
-	//return false for adding it.
+	// 	printf("<br>");
+	// 	echo $user;
+	// 	printf("<br>");
+	$result = mysql_query("SELECT user FROM clientTb where user='$user'");
+
+	//if num of rows equels 0 then no row match the user name.
+	//else if num of rows equels 1, then there a match in tb.
 	$num_rows = mysql_num_rows($result);
-	if ($num_rows == 0){
-		return false;
+	if ($num_rows == 1){
+		// 		echo $num_rows;
+		return 1;
 	}
 	else{
 		//profession exist in db return true for not adding it.
-		return true;
+		return 0;
 	}
 }
 //checks if the wanted webName is valid//
 function validWName($wName){
-	$result = mysql_query("SELECT wName FROM client where wName='$wName'");
+	$result = mysql_query("SELECT wName FROM clientTb where wName='$wName'");
 	//if num of rows equels 0 then no row match the wanted profession.
 	//return false for adding it.
 	$num_rows = mysql_num_rows($result);
@@ -393,7 +454,7 @@ function validPass($pass){
 
 //checks if the wanted mail is valid//
 function validMail($mail){
-	$result = mysql_query("SELECT mail FROM client where mail='$mail'");
+	$result = mysql_query("SELECT mail FROM clientTb where mail='$mail'");
 	//if num of rows equels 0 then no row match the wanted profession.
 	//return false for adding it.
 	$num_rows = mysql_num_rows($result);
@@ -418,7 +479,7 @@ function validLName($lName){
 
 //check if the wanted mPhone is valid
 function validMPhone($mPhone){
-	$result = mysql_query("SELECT mPhone FROM client where mPhone='$mPhone'");
+	$result = mysql_query("SELECT mPhone FROM clientTb where mPhone='$mPhone'");
 	//if num of rows equels 0 then no row match the wanted profession.
 	//return false for adding it.
 	$num_rows = mysql_num_rows($result);
@@ -477,7 +538,7 @@ function returnParams($user, $pass){
 		exit();
 	}
 
-	$query = "SELECT * FROM client where user='$user' and pass='$pass'";
+	$query = "SELECT * FROM clientTb where user='$user' and pass='$pass'";
 
 	$result = $link->query($query);
 
@@ -566,7 +627,7 @@ function insertErrRecord ($mySqliCon,$error){
 function exrectingError ($mySqliCon,$errID){
 
 	$link = openMySqliConnect();
-	
+
 
 	/* check connection */
 	if (mysqli_connect_errno()) {
@@ -580,18 +641,4 @@ function exrectingError ($mySqliCon,$errID){
 	$row = $result->fetch_array(MYSQLI_ASSOC);
 	return $row;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?>

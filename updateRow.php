@@ -1,10 +1,21 @@
+<html DIR="RTL">
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1>welcome to porjectX</h1>
+	<h1>admin entry</h1>
+	<h2>adding Error</h2>
+</body>
+</html>
+
 <?php
 include 'globalDefine.php';
 include 'globalFunction.php';
 
 //link shortcut//
 define ("DOC_ROOT","http://localhost/localOProject/");
-define ("TESTING","testing.php");
+define ("TESTING","addClient.php");
 //end of define part//
 //main//
 
@@ -62,41 +73,41 @@ if((isset($_POST['fProId'])) and (!empty($_POST['fProId'])))
 	$fPro = $_POST['fProId'];
 else
 	$error=$error." first profession is empty,";
-if((isset($_POST['sProId'])) and (!empty($_POST['sProId'])))
-	$sPro = $_POST['sProId'];
-else
-	$error=$error." second profesion is empty,";
-if((isset($_POST['tProId'])) and (!empty($_POST['tProId'])))
-	$thirdPro = $_POST['tProId'];
-else
-	$error=$error." third profession is empty";
+// if((isset($_POST['sProId'])) and (!empty($_POST['sProId'])))
+// 	$sPro = $_POST['sProId'];
+// else
+// 	$error=$error." second profesion is empty,";
+// if((isset($_POST['tProId'])) and (!empty($_POST['tProId'])))
+// 	$thirdPro = $_POST['tProId'];
+// else
+// 	$error=$error." third profession is empty";
 
 if ($error==null){
 	printf('//open connection//');
 	$mySqliCon = openMySqliConnect();
-	printf('<br/>');
-	printf('//check if record is valid//');
-	printf('<br/>');
-
-	$check=updateRecordValid($mySqliCon, $loginUser,$loginPass,
+	//updateRecordValid//
+	$rejction=null;
+	//checking errors.//
+	$rejction = updateRecordValid($mySqliCon, $loginUser,$loginPass,
 			$user,$wName, $pass,$mail,$fName,
-			$lName,$mPhone,$hPhone,$fax,$fPro,$sPro,$thirdPro);
-	echo $check;
-	if ($check==null){
-		printf('<br/>');
-		echo 'valid';
+			$lName,$mPhone,$hPhone,$fax,$fPro,$rejction);//,$sPro,$thirdPro
+	if ($rejction==0){
 		//update recordset//
-		// 		updateDataClient($mySqliCon,$loginPass, $loginUser,$user, $wName, $pass, $mail, $fName,$lName, $mPhone, $hPhone, $fax, $fPro,$sPro, $thirdPro);
+		$errR=exrectingError($mySqliCon, 2);
+		echo '<center>'.$errR['error'].'</center>';
+		updateDataClient($mySqliCon,$loginPass, $loginUser,$user,
+				$wName, $pass, $mail, $fName,$lName,
+				$mPhone, $hPhone, $fax, $fPro);//,$sPro, $thirdPro
 	}
-	// 	else{
-	// 		printf($check);
-	// 		printf('<br/>');
-	// 		printf('//end insert record//');
-	// 		//close connection//
-	// 		mysqli_close($mySqliCon);
-	// 	}
-	// }
-	// else{
+	else{
+		$errR=exrectingError($mySqliCon, 1);
+		echo '<center>'.$errR['error'].'</center>';
+		printf('//end insert record//');
+		//close connection//
+		mysqli_close($mySqliCon);
+	}
+}
+else{
 	printf($error);
 	printf("<br/>");
 	printf("go back");
