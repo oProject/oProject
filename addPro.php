@@ -3,20 +3,24 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<h1>welcome to porjectX</h1>
-	<h1>admin entry</h1>
-	<h2>adding profession</h2>
-
+	<h1>ברוכים הבאים לפרויקט X</h1>
+	<h1>כניסת מנהל</h1>
+	<h2>הוספת מקצוע</h2>
 
 	<br />
 	<form method="post" action="InsertPro.php">
 		<table border="1" align="center" style="margin: 1px auto;">
 			<tr>
-				<td><a href="http://localhost/localOProject/addClient.php"><button
+				<td></td>
+				<td>
+					<a href="http://localhost/localOProject/addPro.php"><button
+							type="button">addPro.php</button> </a>
+					<a href="http://localhost/localOProject/addClient.php"><button
 							type="button">addClient.php</button> </a>
-				</td>
-				<td><a href="http://localhost/localOProject/login.php"><button
-							type="button">login.php</button> </a>
+					<a href="http://localhost/localOProject/addErr.php"><button
+							type="button">addErr.php</button> </a>
+					<a href="http://localhost/localOProject/addPrePhone.php"><button
+							type="button">addPrePhone.php</button></a>
 				</td>
 			</tr>
 			<tr>

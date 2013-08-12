@@ -2,7 +2,7 @@
 
 /**
  * things to do:
- * 
+ *
  */
 
 
@@ -82,73 +82,75 @@ function updateDataClient ($mySqliCon,$loginPass, $loginUser,
 //update all of the client element//
 
 function updateDataClientUser ($mySqliCon,$loginUser,$loginPass,$user){
-	$sql="UPDATE clientTb SET user='$user' WHERE user='$loginUser' and pass='$loginPass'";
+	$sql="UPDATE clienttb SET user='$user' WHERE user='$loginUser' and pass='$loginPass'";
 	// 	printf("$sql");
 	mysqli_query($mySqliCon,$sql);
+	$loginUser=$user;
 }
 
 function updateDataClientWName ($mySqliCon,$loginUser,$loginPass,$wName){
-	$sql="UPDATE clientTb SET wName='$wName' WHERE user='$loginUser' and pass='$loginPass'";
+	$sql="UPDATE clienttb SET wName='$wName' WHERE user='$loginUser' and pass='$loginPass'";
 	// 	printf("$sql");
 	mysqli_query($mySqliCon,$sql);
+	
 }
 
 function updateDataClientPass ($mySqliCon,$loginUser,$loginPass,$pass){
-	$sql="UPDATE clientTb SET pass='$pass' WHERE user=$loginUser' and pass='$loginPass'";
-	// 	printf("$sql");
+	$sql="UPDATE clienttb SET pass='$pass' WHERE user='$loginUser' and pass='$loginPass'"; //
 	mysqli_query($mySqliCon,$sql);
+	$loginpass=$pass;
 }
 
 function updateDataClientMail ($mySqliCon,$loginUser,$loginPass,$mail){
-	$sql="UPDATE clientTb SET mail='$mail' WHERE user=$loginUser' and pass='$loginPass'";
+	$sql="UPDATE clienttb SET mail='$mail' WHERE user='$loginUser' and pass='$loginPass'";
 	// 	printf("$sql");
 	mysqli_query($mySqliCon,$sql);
 }
 
 function updateDataClientFName ($mySqliCon,$loginUser,$loginPass,$fName){
-	$sql="UPDATE clientTb SET fName='$fName' WHERE user=$loginUser' and pass='$loginPass'";
+	$sql="UPDATE clienttb SET fName='$fName' WHERE user='$loginUser' and pass='$loginPass'";
 	// 	printf("$sql");
 	mysqli_query($mySqliCon,$sql);
 }
 
 function updateDataClientLName ($mySqliCon,$loginUser,$loginPass,$lName){
-	$sql="UPDATE clientTb SET lName='$lName' WHERE user=$loginUser' and pass='$loginPass'";
+	$sql="UPDATE clienttb SET lName='$lName' WHERE user='$loginUser' and pass='$loginPass'";
 	// 	printf("$sql");
 	mysqli_query($mySqliCon,$sql);
 }
 
 function updateDataClientMPhone ($mySqliCon,$loginUser,$loginPass,$wName){
-	$sql="UPDATE clientTb SET wName='$wName' WHERE user=$loginUser' and pass='$loginPass'";
+	$sql="UPDATE clienttb SET wName='$wName' WHERE user='$loginUser' and pass='$loginPass'";
 	// 	printf("$sql");
 	mysqli_query($mySqliCon,$sql);
 }
 
 function updateDataClientHPhone ($mySqliCon,$loginUser,$loginPass,$hPhone){
-	$sql="UPDATE clientTb SET hPhone='hPhone' WHERE user=$loginUser' and pass='$loginPass'";
+	$sql="UPDATE clienttb SET hPhone='hPhone' WHERE user='$loginUser' and pass='$loginPass'";
 	// 	printf("$sql");
 	mysqli_query($mySqliCon,$sql);
 }
 
 function updateDataClientFax ($mySqliCon,$loginUser,$loginPass,$fax){
-	$sql="UPDATE clientTb SET fax='$fax' WHERE user=$loginUser' and pass='$loginPass'";
+	$sql="UPDATE clienttb SET fax='$fax' WHERE user='$loginUser' and pass='$loginPass'";
 	// 	printf("$sql");
 	mysqli_query($mySqliCon,$sql);
 }
 
 function updateDataClientFPro ($mySqliCon,$loginUser,$loginPass,$fPro){
-	$sql="UPDATE clientTb SET fPro='$fPro' WHERE user=$loginUser' and pass='$loginPass'";
+	$sql="UPDATE clienttb SET fPro='$fPro' WHERE user='$loginUser' and pass='$loginPass'";
 	// 	printf("$sql");
 	mysqli_query($mySqliCon,$sql);
 }
 
 function updateDataClientSPro ($mySqliCon,$loginUser,$loginPass,$sPro){
-	$sql="UPDATE clientTb SET sPro='$sPro' WHERE user=$loginUser' and pass='$loginPass'";
+	$sql="UPDATE clienttb SET sPro='$sPro' WHERE user='$loginUser' and pass='$loginPass'";
 	// 	printf("$sql");
 	mysqli_query($mySqliCon,$sql);
 }
 
 function updateDataClientsThirdPro ($mySqliCon,$loginUser,$loginPass,$thirdPro){
-	$sql="UPDATE clientTb SET thirdPro='$thirdPro' WHERE user=$loginUser' and pass='$loginPass'";
+	$sql="UPDATE clienttb SET thirdPro='$thirdPro' WHERE user='$loginUser' and pass='$loginPass'";
 	// 	printf("$sql");
 	mysqli_query($mySqliCon,$sql);
 }
@@ -278,6 +280,9 @@ function recordValid($mySqliCon,$user,$wName,$pass,
 	}
 	if (validWName($wName) == true){
 		$rejction="$rejction wanted web Name exist!";
+	}
+	if (validPass($pass) == true){
+		$rejction="$rejction wanted pass isnt valid";
 	}
 	return $rejction;
 }
@@ -447,9 +452,17 @@ function validWName($wName){
 		return true;
 	}
 }
-//check if the wanted pass is valid
+//
+/**
+ * check if the wanted pass is bigger or equel to 8 digits.
+ * @param $pass the wnted password.
+ * return false if pass is valid return true if not.
+ */
 function validPass($pass){
-	return false;
+	if (strlen($pass)>=8)
+		return false;
+	else
+		return true;
 }
 
 //checks if the wanted mail is valid//
@@ -563,6 +576,25 @@ function populatePro(){
 	return $option;
 }
 
+/**
+ * this method populate the pro field in the client adding.
+ */
+function populatePrePhone(){
+	$con = mysql_connect("localhost","root","");
+	mysql_set_charset('utf8',$con);
+
+	$db = mysql_select_db("ourproject",$con);
+	$get=mysql_query("SELECT preNum,preID FROM prephonetb ORDER BY preID ASC");
+	$option = '';
+	while($row = mysql_fetch_assoc($get))
+	{
+		$option .= '<option value = "'.$row['preNum'].'">'.$row['preNum'].'</option>';
+	}
+	return $option;
+}
+
+
+
 
 //END sector 4: return methods//
 
@@ -572,9 +604,9 @@ function populatePro(){
 //adding val to the list//
 //adding errors for error table in data base;
 /**
- * this method check if the profession exist in profession TB;
- * @param string $profession
- * @return boolean true if profession exist or flase if not.
+ * this method check if the error exist in profession TB;
+ * @param string $error
+ * @return boolean true if error exist or flase if not.
  */
 function errValid($error){
 	$link = connect();
@@ -598,6 +630,27 @@ function errValid($error){
 		}
 	}
 }
+
+/**
+ * this method add a record for the pre phone TB.
+ *
+ * @param mysqli_connecot $mySqliCon a connector for the database;
+ * @param String $prePhone the wanted pre to add;
+ */
+function insertPrePhoneRecord ($mySqliCon,$prePhone){
+
+	$sql="INSERT INTO prephonetb (preNum)
+	VALUES ('$prePhone')";
+	echo $sql;
+	if (!mysqli_query($mySqliCon,$sql))
+	{
+		die('Error: ' . mysqli_error($mySqliCon));
+	}
+	echo "1 record added";
+}
+
+
+
 
 /**
  * this method add a record for the tb Error.

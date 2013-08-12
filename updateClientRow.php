@@ -15,7 +15,8 @@ include 'globalFunction.php';
 
 //link shortcut//
 define ("DOC_ROOT","http://localhost/localOProject/");
-define ("TESTING","addClient.php");
+define ("addClient","addClient.php");
+define ("UPDATE","updateClient.php");
 //end of define part//
 //main//
 
@@ -93,16 +94,24 @@ if ($error==null){
 			$lName,$mPhone,$hPhone,$fax,$fPro,$rejction);//,$sPro,$thirdPro
 	if ($rejction==0){
 		//update recordset//
-		$errR=exrectingError($mySqliCon, 2);
-		echo '<center>'.$errR['error'].'</center>';
+		updateDataClientPass ($mySqliCon,$loginUser,$loginPass,$pass);
+		
 		updateDataClient($mySqliCon,$loginPass, $loginUser,$user,
 				$wName, $pass, $mail, $fName,$lName,
 				$mPhone, $hPhone, $fax, $fPro);//,$sPro, $thirdPro
+		$errR=exrectingError($mySqliCon, 2);
+		echo '<center>'.$errR['error'].'</center>';
+		echo '<a href="'.DOC_ROOT.addClient.'">'.addClient.'</a>';
+		printf("<br/>");
+		echo '<a href="'.DOC_ROOT.UPDATE.'">'.UPDATE.'</a>';
 	}
 	else{
 		$errR=exrectingError($mySqliCon, 1);
 		echo '<center>'.$errR['error'].'</center>';
 		printf('//end insert record//');
+		echo '<a href="'.DOC_ROOT.addClient.'">'.addClient.'</a>';
+		printf("<br/>");
+		echo '<a href="'.DOC_ROOT.UPDATE.'">'.UPDATE.'</a>';
 		//close connection//
 		mysqli_close($mySqliCon);
 	}
@@ -112,7 +121,9 @@ else{
 	printf("<br/>");
 	printf("go back");
 	printf("<br/>");
-	echo '<a href="'.DOC_ROOT.TESTING.'">'.TESTING.'</a>';
+	echo '<a href="'.DOC_ROOT.addClient.'">'.addClient.'</a>';
+	printf("<br/>");
+	echo '<a href="'.DOC_ROOT.UPDATE.'">'.UPDATE.'</a>';
 }
 //end of main//
 ?>

@@ -7,18 +7,25 @@ require_once 'globalFunction.php';
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<h1>welcome to porjectX</h1>
-	<h1>admin entry</h1>
-	<h2>server entry</h2>
-	<br/>
-	<br/>
+	<h1>ברוכים הבאים לפרויקט X</h1>
+	<h1>כניסת מנהל</h1>
+	<h2>הוספת לקוח</h2>
+	<br />
+	<br />
 	<form method="post" action="Insert.php">
 		<table border="1" align="center" style="margin: 1px auto;">
 			<tr>
-				<td><a href="http://localhost/localOProject/addPro.php"><button
-							type="button">addPro.php</button> </a></td>
-				<td><a href="http://localhost/localOProject/login.php"><button
-							type="button">login.php</button> </a></td>
+				<td></td>
+				<td>
+					<a href="http://localhost/localOProject/addPro.php"><button
+							type="button">addPro.php</button> </a>
+					<a href="http://localhost/localOProject/addClient.php"><button
+							type="button">addClient.php</button> </a>
+					<a href="http://localhost/localOProject/addErr.php"><button
+							type="button">addErr.php</button> </a>
+					<a href="http://localhost/localOProject/addPrePhone.php"><button
+							type="button">addPrePhone.php</button></a>		
+				</td>
 			</tr>
 			<tr>
 				<td>:שם משתמש</td>
@@ -46,16 +53,26 @@ require_once 'globalFunction.php';
 			</tr>
 			<tr>
 				<td>טלפון נייד</td>
-				<td><input type="text" name="mPhone" /></td>
+				<td><input type="text" name="mPhone" /> <select name="preMPhone"
+					style="">
+						<?php $option=populatePrePhone(); echo $option?>
+				</select>
+				</td>
 			</tr>
-
 			<tr>
 				<td>טלפון במשרד</td>
-				<td><input type="text" name="hPhone" /></td>
+				<td><input type="text" name="hPhone" /> <select name="preHPhone"
+					style="">
+						<?php $option=populatePrePhone(); echo $option?>
+				</select>
+				</td>
 			</tr>
 			<tr>
 				<td>פקס</td>
-				<td><input type="text" name="fax" /></td>
+				<td><input type="text" name="fax" /> <select name="preFax" style="">
+						<?php $option=populatePrePhone(); echo $option?>
+				</select>
+				</td>
 			</tr>
 			<tr>
 				<td>מקצוע</td>
@@ -66,7 +83,7 @@ require_once 'globalFunction.php';
 			</tr>
 			<tr>
 				<td></td>
-				<td align="left"><input type="submit" name="submit" /></td>
+				<td align="right"><input type="submit" name="submit" /></td>
 			</tr>
 		</table>
 

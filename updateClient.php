@@ -36,7 +36,7 @@ if ($error==null){
 		//		data from server	//
 		
 		//original login details//
-		echo '<form method="post" action="updateRow.php">';
+		echo '<form method="post" action="updateClientRow.php">';
 		print "<table border=1 align=center style=margin: 1px auto;>";
 		print "<tr>";
 			print "<td>";
