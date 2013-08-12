@@ -75,13 +75,13 @@ if((isset($_POST['fProId'])) and (!empty($_POST['fProId'])))
 else
 	$error=$error." first profession is empty,";
 // if((isset($_POST['sProId'])) and (!empty($_POST['sProId'])))
-// 	$sPro = $_POST['sProId'];
-// else
-// 	$error=$error." second profesion is empty,";
-// if((isset($_POST['tProId'])) and (!empty($_POST['tProId'])))
-// 	$thirdPro = $_POST['tProId'];
-// else
-// 	$error=$error." third profession is empty";
+	// 	$sPro = $_POST['sProId'];
+	// else
+		// 	$error=$error." second profesion is empty,";
+		// if((isset($_POST['tProId'])) and (!empty($_POST['tProId'])))
+			// 	$thirdPro = $_POST['tProId'];
+			// else
+				// 	$error=$error." third profession is empty";
 
 if ($error==null){
 	printf('//open connection//');
@@ -95,7 +95,7 @@ if ($error==null){
 	if ($rejction==0){
 		//update recordset//
 		updateDataClientPass ($mySqliCon,$loginUser,$loginPass,$pass);
-		
+
 		updateDataClient($mySqliCon,$loginPass, $loginUser,$user,
 				$wName, $pass, $mail, $fName,$lName,
 				$mPhone, $hPhone, $fax, $fPro);//,$sPro, $thirdPro

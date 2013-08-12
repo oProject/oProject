@@ -12,7 +12,7 @@ require_once 'globalFunction.php';
 	<h2>הוספת לקוח</h2>
 	<br />
 	<br />
-	<form method="post" action="Insert.php">
+	<form method="post" action="InsertClient.php">
 		<table border="1" align="center" style="margin: 1px auto;">
 			<tr>
 				<td></td>

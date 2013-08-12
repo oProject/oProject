@@ -101,6 +101,8 @@ if ($error==null){
 				$fax, $fPro);//, $sPro, $thirdPro
 		$insErr=exrectingError($mySqliCon, 2);
 		echo '<center>'.$insErr['error'].'</center>';
+		echo "go to next stage";
+		
 		echo '<center><a href="'.DOC_ROOT.TESTING.'">'.TESTING.'</a></center>';
 	}
 	else{
