@@ -8,7 +8,7 @@
 	<h2>עדכון פרטי לקוח</h2>
 </body>
 </html>
-
+//
 <?php
 include 'globalDefine.php';
 include 'globalFunction.php';
