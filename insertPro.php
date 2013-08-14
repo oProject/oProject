@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-<?php
-include 'globalDefine.php';
-include 'globalFunction.php';
-=======
 <html DIR="RTL">
 <head>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -11,7 +6,6 @@ include 'globalFunction.php';
 	<h1>welcome to porjectX</h1>
 	<h1>admin entry</h1>
 	<h2>adding profession</h2>
->>>>>>> branch 'master' of https://github.com/oProject/oProject.git
 
 	<?php
 	include 'globalDefine.php';
@@ -35,20 +29,6 @@ include 'globalFunction.php';
 	else {
 		$ans=3;
 	}
-<<<<<<< HEAD
-
-	//close connection//
-	mysqli_close($mySqliCon);
-}
-else {
-	printf("<br/>");
-	printf("go back");
-	printf("<br/>");
-	echo'<a href='.DOC_ROOT.ADD_PRO.'>'.ADD_PRO.'</a>';
-}
-
-?>
-=======
 	//open connection to server//
 	$mySqliCon = openMySqliConnect();
 	switch ($ans){
@@ -78,4 +58,3 @@ else {
 	?>
 </body>
 </html>
->>>>>>> branch 'master' of https://github.com/oProject/oProject.git
