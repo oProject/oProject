@@ -5,10 +5,10 @@
 <body>
 	<h1>ברוכים הבאים לפרויקט X</h1>
 	<h1>כניסת מנהל</h1>
-	<h2>הוספת מקצוע</h2>
+	<h2>הוספת שגיאה</h2>
 
 	<br />
-	<form method="post" action="InsertPro.php">
+	<form method="post" action="insertErr.php">
 		<table border="1" align="center" style="margin: 1px auto;">
 			<tr>
 				<td></td>
@@ -24,12 +24,14 @@
 				</td>
 			</tr>
 			<tr>
-				<td>הכנס מקצוע:</td>
-				<td><input type="text" name="profession" /></td>
+				<td>הכנס שם שגיאה:</td>
+				<td><input type="text" name="err" />
+				</td>
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="submit" name="submit" /></td>
+				<td><input type="submit" name="submit" />
+				</td>
 			</tr>
 		</table>
 	</form>

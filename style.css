@@ -1,12 +1,30 @@
 @CHARSET "UTF-8";
+
 body {
-	background-image:url(pic/backgrund.png)
-	
+	background-image: url(pic/backgrund.png);
 }
+<<<<<<< HEAD
 h1{
 text-align:center;
 <<<<<<< HEAD
 }
 =======
+=======
+
+h1 {
+	text-align: center;
+	text-decoration:underline;
+>>>>>>> branch 'master' of https://github.com/oProject/oProject.git
+}
+<<<<<<< HEAD
+>>>>>>> branch 'master' of https://github.com/oProject/oProject.git
+=======
+
+h2 {
+	text-align: center;
+}
+
+h4 {
+	text-align: center;
 }
 >>>>>>> branch 'master' of https://github.com/oProject/oProject.git
