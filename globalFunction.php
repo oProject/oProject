@@ -1,8 +1,15 @@
 <?php
 
 /**
- * things to do:
  *
+ * things to do:
+ כל לקוח חדש שפותח חשבון נפתח בעבורו את הדברים הבאים בשרת!
+ עמוד עיצוב, webPageName.css.
+ תיקיית תמונות, folder/webPageName
+ אופציה של איחזור סיסמא
+
+ template בשביל התצוגה של הלקוח.
+
  */
 
 
@@ -45,20 +52,7 @@ function openMySqliConnect(){
 //sector 2: update and inserting recordset of the client tb//
 
 /**
- *
- * @param unknown_type $mySqliCon
- * @param unknown_type $user
- * @param unknown_type $wName
- * @param unknown_type $pass
- * @param unknown_type $mail
- * @param unknown_type $fName
- * @param unknown_type $lName
- * @param unknown_type $mPhone
- * @param unknown_type $hPhone
- * @param unknown_type $fax
- * @param unknown_type $fPro
- * @param unknown_type $sPro
- * @param unknown_type $thirdPro
+ * this method update a client record set and update it According.
  */
 function updateDataClient ($mySqliCon,$loginPass, $loginUser,
 		$user,$wName,$pass, $mail,$fName,$lName,$mPhone,
@@ -69,20 +63,24 @@ function updateDataClient ($mySqliCon,$loginPass, $loginUser,
 	updateDataClientMail($mySqliCon, $loginUser, $loginPass, $mail);
 	updateDataClientFName($mySqliCon, $loginUser, $loginPass, $fName);
 	updateDataClientLName($mySqliCon, $loginUser, $loginPass, $lName);
-	updateDataClientMPhone($mySqliCon, $loginUser, $loginPass, $wName);
+	updateDataClientMPhone($mySqliCon, $loginUser, $loginPass, $mPhone);
 	updateDataClientHPhone($mySqliCon, $loginUser, $loginPass, $hPhone);
 	updateDataClientFax($mySqliCon, $loginUser, $loginPass, $fax);
 	updateDataClientFPro($mySqliCon, $loginUser, $loginPass, $fPro);
 	// 	updateDataClientSPro($mySqliCon, $loginUser, $loginPass, $sPro);
 	// 	updateDataClientsThirdPro($mySqliCon, $loginUser, $loginPass, $thirdPro);
-	printf("</br>");
-	printf("updated 1 record");
+	// 	printf("</br>");
+	// 	printf("updated 1 record");
 }
 
 //update all of the client element//
-
 function updateDataClientUser ($mySqliCon,$loginUser,$loginPass,$user){
+	//update clienttb;
 	$sql="UPDATE clienttb SET user='$user' WHERE user='$loginUser' and pass='$loginPass'";
+	// 	printf("$sql");
+	mysqli_query($mySqliCon,$sql);
+	//update client data tb;
+	$sql="UPDATE clientdatatb SET user='$user' WHERE user='$loginUser' and pass='$loginPass'";
 	// 	printf("$sql");
 	mysqli_query($mySqliCon,$sql);
 	$loginUser=$user;
@@ -92,11 +90,15 @@ function updateDataClientWName ($mySqliCon,$loginUser,$loginPass,$wName){
 	$sql="UPDATE clienttb SET wName='$wName' WHERE user='$loginUser' and pass='$loginPass'";
 	// 	printf("$sql");
 	mysqli_query($mySqliCon,$sql);
-	
+
 }
 
 function updateDataClientPass ($mySqliCon,$loginUser,$loginPass,$pass){
+	//update clienttb;
 	$sql="UPDATE clienttb SET pass='$pass' WHERE user='$loginUser' and pass='$loginPass'"; //
+	mysqli_query($mySqliCon,$sql);
+	//update clintdatatb;
+	$sql="UPDATE clientdatatb SET pass='$pass' WHERE user='$loginUser' and pass='$loginPass'"; //
 	mysqli_query($mySqliCon,$sql);
 	$loginpass=$pass;
 }
@@ -119,14 +121,14 @@ function updateDataClientLName ($mySqliCon,$loginUser,$loginPass,$lName){
 	mysqli_query($mySqliCon,$sql);
 }
 
-function updateDataClientMPhone ($mySqliCon,$loginUser,$loginPass,$wName){
-	$sql="UPDATE clienttb SET wName='$wName' WHERE user='$loginUser' and pass='$loginPass'";
+function updateDataClientMPhone ($mySqliCon,$loginUser,$loginPass,$mPhone){
+	$sql="UPDATE clienttb SET mPhone='$mPhone' WHERE user='$loginUser' and pass='$loginPass'";
 	// 	printf("$sql");
 	mysqli_query($mySqliCon,$sql);
 }
 
 function updateDataClientHPhone ($mySqliCon,$loginUser,$loginPass,$hPhone){
-	$sql="UPDATE clienttb SET hPhone='hPhone' WHERE user='$loginUser' and pass='$loginPass'";
+	$sql="UPDATE clienttb SET hPhone='$hPhone' WHERE user='$loginUser' and pass='$loginPass'";
 	// 	printf("$sql");
 	mysqli_query($mySqliCon,$sql);
 }
@@ -184,7 +186,7 @@ function proValid($profession){
 }
 
 /**
- * this method add a record for the tb protb.
+ * this method add a profession record for the tb protb.
  *
  * @param mysqli_connecot $mySqliCon a connector for the database;
  * @param String $profession the wnted param to add for tb;
@@ -222,7 +224,8 @@ function insertDataRecord ($mySqliCon,$user,$wName,$pass,
 		$hPhone,$fax,$fPro){//,$sPro,$thirdPro
 
 	////,sPro,thirdPro
-	$sql="INSERT INTO clientTb (user,wName,pass,mail,fName,lName
+	//this parts add the client record to the client tb.
+	$sql="INSERT INTO clienttb (user,wName,pass,mail,fName,lName
 	,mPhone,hPhone,fax,fPro)
 	VALUES ('$user','$wName','$pass','$mail','$fName','$lName',
 	'$mPhone','$hPhone','$fax','$fPro')";
@@ -230,7 +233,17 @@ function insertDataRecord ($mySqliCon,$user,$wName,$pass,
 	{
 		die('Error: ' . mysqli_error($mySqliCon));
 	}
-	echo "1 record added";
+	echo "clienttb added 1 record set";
+
+	//this parts add the relavent client record to the clientdatatb.
+	$sql="INSERT INTO clientdatatb (user,pass)
+	VALUES ('$user','$pass')";
+	if (!mysqli_query($mySqliCon,$sql))
+	{
+		die('Error: ' . mysqli_error($mySqliCon));
+	}
+	echo "clientdatatb added 1 record set";
+
 }
 
 //END sector 2: update a recordset of the client tb//
@@ -284,6 +297,15 @@ function recordValid($mySqliCon,$user,$wName,$pass,
 	if (validPass($pass) == true){
 		$rejction="$rejction wanted pass isnt valid";
 	}
+	if (validPhone($hPhone) == true){
+		$rejction="$rejction wanted home phone isnt valid";
+	}
+	if (validMPhone($mPhone) == true){
+		$rejction="$rejction wanted mobile phone isnt valid";
+	}
+	if (validPhone($fax) == true){
+		$rejction="$rejction wanted fax isnt valid";
+	}
 	return $rejction;
 }
 
@@ -304,8 +326,8 @@ function updateRecordValid($mySqliCon, $loginUser,$loginPass,
 	$rejction=$rejction + ganriValid($fName, $loginRow['fName'], $rejction,0);
 	$rejction=$rejction + ganriValid($lName, $loginRow['lName'], $rejction,0);
 	$rejction=$rejction + ganriValid($mPhone, $loginRow['mPhone'], $rejction,5);
-	$rejction=$rejction + ganriValid($hPhone, $loginRow['hPhone'], $rejction,0);
-	$rejction=$rejction + ganriValid($fax, $loginRow['fax'], $rejction,0);
+	$rejction=$rejction + ganriValid($hPhone, $loginRow['hPhone'], $rejction,6);
+	$rejction=$rejction + ganriValid($fax, $loginRow['fax'], $rejction,6);
 	$rejction=$rejction + ganriValid($fPro, $loginRow['fPro'], $rejction,0);
 	// 	$rejction=ganriValid($sPro, $loginRow['sPro'], $rejction,0);
 	// 	$rejction=ganriValid($thirdPro, $loginRow['thirdPro'], $rejction,0);
@@ -377,12 +399,12 @@ function ganriValid($first,$second,$rejction,$num){
 				return 0;
 				break;
 			}
-			else if (validMail($first) == 0){
-				return 0;
+			else if (validMail($first)){
+				return 1;
 				break;
 			}
 			else {
-				return 1;
+				return 0;
 				break;
 			}
 			//mobile phone
@@ -391,14 +413,25 @@ function ganriValid($first,$second,$rejction,$num){
 				return 0;
 				break;
 			}
-			else if (validMPhone($first) == 0){
-				return 0;
-				break;
-			}
-			else {
+			else if (existMPhone($first) == 1){
 				return 1;
 				break;
 			}
+			else if (validMPhone($first)){
+				return 1;
+				break;
+			}
+			else {
+				return 0;
+				break;
+			}//home phone
+		case 6:
+			if (validPhone($first)){
+				return 1;
+			}
+			else
+				return 0;
+			break;
 	}
 }
 
@@ -491,11 +524,14 @@ function validLName($lName){
 }
 
 //check if the wanted mPhone is valid
-function validMPhone($mPhone){
+function existMPhone($mPhone){
+	// 	printf($mPhone);
 	$result = mysql_query("SELECT mPhone FROM clientTb where mPhone='$mPhone'");
 	//if num of rows equels 0 then no row match the wanted profession.
 	//return false for adding it.
 	$num_rows = mysql_num_rows($result);
+	// 	printf("<br>");
+	// 	printf($num_rows);
 	if ($num_rows == 0){
 		return false;
 	}
@@ -505,27 +541,72 @@ function validMPhone($mPhone){
 	}
 }
 
-//check if the wanted hPhone is valid
-function validHPhone($hPhone){
-	return false;
+//check if the wanted Phone number is valid
+//if true phone isnt valid.
+//if false phone valid.
+function validPhone($Phone){
+// 	$length=strlen($Phone);
+// 	if ($length > 9) {
+// 		printf("<br>");
+// 		printf("larger");
+// 		return true;
+// 	}
+// 	else if ($length < 9){
+// 		printf("<br>");
+// 		printf("smaller");
+// 		return true;
+// 	}
+// 	else{
+		return false;
+// 	}
+}
+
+//check if the wanted Phone number is valid
+//if true phone isnt valid.
+//if false phone valid.
+function validMPhone($Phone){
+	$length=strlen($Phone);
+	//($length < 10) and
+	if ( ($length>10)) {
+		printf("<br>");
+		printf("larger");
+		printf("<br>");
+		return true;
+	}
+	else if ($length<10){
+		return true;
+		printf("smaller");
+		printf("<br>");
+	}
+	else{
+		return false;
+	}
 }
 
 //check if the wanted fax is valid
+//if true phone isnt valid.
+//if false phone valid.
 function validFax($fax){
 	return false;
 }
 
 //check if the wanted fPro is valid
+//if true phone isnt valid.
+//if false phone valid.
 function validFPro($fPro){
 	return false;
 }
 
 //check if the wanted sPro is valid
+//if true phone isnt valid.
+//if false phone valid.
 function validSPro($sPro){
 	return false;
 }
 
 //check if the wanted thirdPro is valid
+//if true phone isnt valid.
+//if false phone valid.
 function validThirdPro($thirdPro){
 	return false;
 }
@@ -604,7 +685,7 @@ function populatePrePhone(){
 //adding val to the list//
 //adding errors for error table in data base;
 /**
- * this method check if the error exist in profession TB;
+ * this method check if the error exist in error TB;
  * @param string $error
  * @return boolean true if error exist or flase if not.
  */
@@ -649,9 +730,6 @@ function insertPrePhoneRecord ($mySqliCon,$prePhone){
 	echo "1 record added";
 }
 
-
-
-
 /**
  * this method add a record for the tb Error.
  *
@@ -673,14 +751,13 @@ function insertErrRecord ($mySqliCon,$error){
 //exrecting val from the list//
 
 /**
- *
- * @param unknown_type $mySqliCon
- * @param unknown_type $errID
+ * this method extract the error Reason.
+ * @param $mySqliCon - the database connector.
+ * @param $errID - the wanted error number.
  */
 function exrectingError ($mySqliCon,$errID){
 
 	$link = openMySqliConnect();
-
 
 	/* check connection */
 	if (mysqli_connect_errno()) {

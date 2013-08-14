@@ -6,7 +6,7 @@
 	<h1>ברוכים הבאים לפרויקט X</h1>
 	<h1>כניסת משתמש</h1>
 
-	<form method="post" action="update.php">
+	<form method="post" action="updateClient.php">
 		<h4>הכנס שם משתמש וסיסמא:</h4>
 		<table border="1" align="center" style="margin: 1px auto;">
 			<tr>

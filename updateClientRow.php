@@ -3,9 +3,9 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<h1>welcome to porjectX</h1>
-	<h1>admin entry</h1>
-	<h2>adding Error</h2>
+	<h1>ברוכים הבאים לפרויקט X</h1>
+	<h1>כניסת מנהל</h1>
+	<h2>עדכון פרטי לקוח</h2>
 </body>
 </html>
 
@@ -75,16 +75,16 @@ if((isset($_POST['fProId'])) and (!empty($_POST['fProId'])))
 else
 	$error=$error." first profession is empty,";
 // if((isset($_POST['sProId'])) and (!empty($_POST['sProId'])))
-	// 	$sPro = $_POST['sProId'];
-	// else
-		// 	$error=$error." second profesion is empty,";
-		// if((isset($_POST['tProId'])) and (!empty($_POST['tProId'])))
-			// 	$thirdPro = $_POST['tProId'];
-			// else
-				// 	$error=$error." third profession is empty";
+// 	$sPro = $_POST['sProId'];
+// else
+// 	$error=$error." second profesion is empty,";
+// if((isset($_POST['tProId'])) and (!empty($_POST['tProId'])))
+// 	$thirdPro = $_POST['tProId'];
+// else
+// 	$error=$error." third profession is empty";
 
 if ($error==null){
-	printf('//open connection//');
+// 	printf('//open connection//');
 	$mySqliCon = openMySqliConnect();
 	//updateRecordValid//
 	$rejction=null;
@@ -94,8 +94,6 @@ if ($error==null){
 			$lName,$mPhone,$hPhone,$fax,$fPro,$rejction);//,$sPro,$thirdPro
 	if ($rejction==0){
 		//update recordset//
-		updateDataClientPass ($mySqliCon,$loginUser,$loginPass,$pass);
-
 		updateDataClient($mySqliCon,$loginPass, $loginUser,$user,
 				$wName, $pass, $mail, $fName,$lName,
 				$mPhone, $hPhone, $fax, $fPro);//,$sPro, $thirdPro

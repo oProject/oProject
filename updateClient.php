@@ -3,9 +3,9 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<h1>welcome to porjectX</h1>
-	<h1>admin entry</h1>
-	<h2>adding profession</h2>
+	<h1>ברוכים הבאים לפרויקט X</h1>
+	<h1>כניסת מנהל</h1>
+	<h2>עדכון פרטי לקוח</h2>
 </body>
 </html>
 <?php
@@ -141,7 +141,10 @@ if ($error==null){
 				print "</td>";
 				print "<td>";
 					$mPhone=$row['mPhone'];
-					print "<input type=text name=mPhone value='$mPhone'>";
+					print "<input type=text name=mPhone value='$mPhone'> ";
+// 					print("<select name=preMPhone style=>");
+// 						$option=populatePrePhone(); echo $option;
+// 					print("</select>");
 				print "</td>";
 			print "</tr>";
 			

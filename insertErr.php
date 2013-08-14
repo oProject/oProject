@@ -13,6 +13,7 @@
 	//connector between pages//
 	define ("DOC_ROOT","http://localhost/localOProject/");
 	define ("ADD_PRO","addPro.php");
+	define ("ADD_ERR","addErr.php");
 	//end//
 	$ans=null;
 
@@ -34,18 +35,18 @@
 
 	switch ($ans){
 		case 1:
-			// if wanted profession exist in db return false.
+			// if wanted error exist in db return false.
 			$errR=exrectingError($mySqliCon, 1);
 			echo '<center>'.$errR['error'].'</center>';
-			echo'<center><a href='.DOC_ROOT.ADD_PRO.'>'.ADD_PRO.'</a></center>';
+			echo'<center><a href='.DOC_ROOT.ADD_ERR.'>'.ADD_ERR.'</a></center>';
 			break;
 		case 2:
-			//if not exist add to database this profession//
+			//if not exist add to database this error//
 			insertErrRecord($mySqliCon, $err);
 			$errR=exrectingError($mySqliCon, 2);
 			echo '<center>'.$errR['error'].'</center>';
 			echo 'go back';
-			echo'<center><a href='.DOC_ROOT.ADD_PRO.'>'.ADD_PRO.'</a></center>';
+			echo'<center><a href='.DOC_ROOT.ADD_ERR.'>'.ADD_ERR.'</a></center>';
 			break;
 		case 3:
 			//user didn't fill any text in the text box.
@@ -53,7 +54,7 @@
 			echo '<center>'.$errR['error'].'</center>';
 			echo '<br/>';
 			echo '<center>תחזור למלא פרטים</center>';
-			echo '<center><a href='.DOC_ROOT.ADD_PRO.'>'.ADD_PRO.'</a></center>';
+			echo '<center><a href='.DOC_ROOT.ADD_ERR.'>'.ADD_ERR.'</a></center>';
 			break;
 	}
 	?>

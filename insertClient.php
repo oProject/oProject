@@ -3,9 +3,9 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<h1>welcome to porjectX</h1>
-	<h1>admin entry</h1>
-	<h2>adding Error</h2>
+	<h1>ברוכים הבאים לפרויקט X</h1>
+	<h1>כניסת מנהל</h1>
+	<h2>הוספת לקוח</h2>
 </body>
 </html>
 <?php 

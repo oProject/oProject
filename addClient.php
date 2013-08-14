@@ -16,15 +16,14 @@ require_once 'globalFunction.php';
 		<table border="1" align="center" style="margin: 1px auto;">
 			<tr>
 				<td></td>
-				<td>
-					<a href="http://localhost/localOProject/addPro.php"><button
-							type="button">addPro.php</button> </a>
-					<a href="http://localhost/localOProject/addClient.php"><button
-							type="button">addClient.php</button> </a>
-					<a href="http://localhost/localOProject/addErr.php"><button
-							type="button">addErr.php</button> </a>
-					<a href="http://localhost/localOProject/addPrePhone.php"><button
-							type="button">addPrePhone.php</button></a>		
+				<td><a href="http://localhost/localOProject/addPro.php"><button
+							type="button">addPro.php</button> </a> <a
+					href="http://localhost/localOProject/addClient.php"><button
+							type="button">addClient.php</button> </a> <a
+					href="http://localhost/localOProject/addErr.php"><button
+							type="button">addErr.php</button> </a> <a
+					href="http://localhost/localOProject/addPrePhone.php"><button
+							type="button">addPrePhone.php</button> </a>
 				</td>
 			</tr>
 			<tr>
@@ -53,8 +52,8 @@ require_once 'globalFunction.php';
 			</tr>
 			<tr>
 				<td>טלפון נייד</td>
-				<td><input type="text" name="mPhone" /> <select name="preMPhone"
-					style="">
+				<td><input type="text" name="mPhone" /> 
+				<select name="preMPhone" style="">
 						<?php $option=populatePrePhone(); echo $option?>
 				</select>
 				</td>
